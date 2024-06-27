@@ -1,0 +1,8 @@
+export const enum DISPLAY_LEVEL {
+  PENCIL_ONLY,
+  JUMP_NO_ATTR,
+  JUMP_READ_ONLY,
+  JUMP,
+  RESET,
+  OTHER
+}

@@ -1,0 +1,187 @@
+@import './colors.css';
+@import './sizes.css';
+
+.app-line-break {
+  flex-basis: 100%;
+  height: 0;
+}
+
+.app-font-normal {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.app-font-sm {
+  font-size: 0.75rem;
+  font-weight: normal;
+}
+
+.app-show-inline {
+  display: inline;
+}
+
+.app-show-flex {
+  display: flex;
+}
+
+.app-hide {
+  display: none;
+}
+
+.app-title-centered {
+  text-align: center;
+  font-size: 2rem;
+  padding-bottom: 1rem;
+}
+
+.app-title {
+  font-size: 2rem;
+  padding-bottom: 1rem;
+}
+
+.app-sub-title-centered {
+  text-align: center;
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.app-sub-title {
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.app-default-text {
+  font-size: 1rem;
+  margin-bottom: -4px;
+}
+
+.app-link {
+  color: var(--link);
+  text-decoration: none;
+  cursor: pointer; 
+} 
+.app-link-sm {
+  font-size: 0.75rem;
+  color: var(--link);
+  text-decoration: none;
+  cursor: pointer; 
+}
+
+.app-indent-right-08 {
+  margin-right: var(--8);
+}
+
+.app-indent-right-16 {
+  margin-right: var(--16);
+}
+
+.app-indent-right-20 {
+  margin-right: var(--20);
+}
+
+.app-indent-top-08 {
+  margin-top: var(--8);
+}
+
+.app-indent-top-16 {
+  margin-top: var(--16);
+}
+
+.app-indent-top-20 {
+  margin-top: var(--20);
+}
+
+.app-indent-top-32 {
+  margin-top: var(--32);
+}
+
+.app-clickable {
+  cursor: pointer;
+}
+
+.app-button-primary {
+  background-color: var(--blue-02);
+  cursor: pointer;
+  border: 1px solid var(--blue-03);
+  border-radius: 5px;
+  padding: 16px 32px;
+  display: inline-block;
+  font-size: 2rem;
+  margin: 4px 2px;
+  color: white;
+}
+
+.app-button-primary-sm {
+  background-color: var(--blue-02);
+  cursor: pointer;
+  border: 1px solid var(--blue-03);
+  border-radius: 5px;
+  padding: 4px 8px;
+  display: inline-block;
+  font-size: 1rem;
+  margin: 4px 2px;
+  color: white;
+}
+
+.app-button-ghost {
+  cursor: pointer;
+  border: 1px solid var(--blue-03);
+  border-radius: 5px;
+  padding: 16px 32px;
+  display: inline-block;
+  font-size: 2rem;
+  margin: 4px 2px;
+}
+
+.app-button-ghost-sm {
+  cursor: pointer;
+  border: 1px solid var(--blue-03);
+  border-radius: 5px;
+  padding: 4px 8px;
+  display: inline-block;
+  font-size: 1rem;
+  margin: 4px 2px;
+}
+
+.app-page {
+  direction: rtl;
+  padding-right: 20px;
+  flex: 2;
+  background-color: var(--background);
+  overflow: auto;
+  height: 100vh;
+}
+
+.banner {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.game-settings-global-hide {
+  display: none;
+}
+
+.game-settings-global-show {
+  display: block;
+
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  background-color: white;
+  padding: 16px;
+  border: solid 1px var(--gray-02) 
+}
+
+.game-settings-title {
+  font-weight: 600;
+  padding-bottom: 8px;
+}
+
+.game-settings-entry {
+  line-height: 1.5rem;
+}
+
+
+
