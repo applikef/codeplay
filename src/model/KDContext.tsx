@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { KidDevCode, KidDevCodeStatement } from './kidDevModel';
-import { updateCodeStatement } from './../utils/statementsUtil';
+import { KDCode, KDCodeStatement } from './kidDevModel';
+import { updateCodeStatement } from '../utils/statementsUtil';
 
-export type KidDevContextType = {
+export type KDContextType = {
   displayLevel: number;
-  code: KidDevCode;
+  code: KDCode;
   penX: number;
   penY: number;
   pencilX: number;
@@ -12,15 +12,15 @@ export type KidDevContextType = {
   stroke: string;
 
   setDisplayLevel: (newValue: number) => void;
-  setCode: (newCode: KidDevCode) => void;
-  setCodeStatement: (newStatement: KidDevCodeStatement) => void;
+  setCode: (newCode: KDCode) => void;
+  setCodeStatement: (newStatement: KDCodeStatement) => void;
   setPenX: (x: number) => void;
   setPenY: (y: number) => void;
   setPencilX: (x: number) => void;
   setPencilY: (y: number) => void;
 };
 
-const KidDevContext = React.createContext<KidDevContextType | null>(null);
+const KDContext = React.createContext<KDContextType | null>(null);
 
 export const KidDevProvider: React.FC<React.PropsWithChildren> = ({
   children,
@@ -31,12 +31,12 @@ export const KidDevProvider: React.FC<React.PropsWithChildren> = ({
     setDisplayLevelState(() => newValue);
   }
 
-  const [code, setCodeState] = useState<KidDevCode>({code: []});
-  const setCode = (newCode: KidDevCode) => {
+  const [code, setCodeState] = useState<KDCode>({code: []});
+  const setCode = (newCode: KDCode) => {
     setCodeState(newCode);
   }
-  const setCodeStatement = (newStatement: KidDevCodeStatement) => {
-    const newCode: KidDevCode = updateCodeStatement(code, newStatement);
+  const setCodeStatement = (newStatement: KDCodeStatement) => {
+    const newCode: KDCode = updateCodeStatement(code, newStatement);
     setCodeState(newCode);
   }
 
@@ -60,7 +60,7 @@ export const KidDevProvider: React.FC<React.PropsWithChildren> = ({
   const stroke = "blue";
 
   return (
-    <KidDevContext.Provider
+    <KDContext.Provider
       value={{
         displayLevel,
         code,
@@ -79,8 +79,8 @@ export const KidDevProvider: React.FC<React.PropsWithChildren> = ({
       }}
     >
       {children}
-    </KidDevContext.Provider>
+    </KDContext.Provider>
   );
 };
 
-export default KidDevContext;
+export default KDContext;

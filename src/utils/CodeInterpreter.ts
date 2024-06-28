@@ -1,15 +1,12 @@
-import { KidDevContextType } from "./../model/KidDevContext";
-import { KidDevCodeBlock, KidDevCodeStatement } from "./../model/kidDevModel";
+import { StatementCode } from "../model/modelConstants";
+import { KDContextType } from "./../model/KDContext";
+import { KDCodeBlock, KDCodeStatement } from "./../model/kidDevModel";
 import { DefaultMagnitude } from "./statementsUtil";
 
-export enum StatementCode {
-  JUMP
-}
-
 export class CodeInterpreter { 
-  private context: KidDevContextType;
+  private context: KDContextType;
 
-  constructor(context: KidDevContextType) {
+  constructor(context: KDContextType) {
     this.context = context;
   }
 
@@ -41,12 +38,12 @@ export class CodeInterpreter {
     if (this.context.displayLevel === 0) {
       return;
     }
-    this.context.code.code.map((block: KidDevCodeBlock)=>block.statements.map((s,i)=>
+    this.context.code.code.map((block: KDCodeBlock)=>block.statements.map((s,i)=>
       this.executeStatement(s,i)
     ))
   }
  
-  private executeStatement(s: KidDevCodeStatement, i: number) {
+  private executeStatement(s: KDCodeStatement, i: number) {
     switch(s.name) {
       case StatementCode.JUMP: {
           this.jump(s.magnitude ? 
@@ -66,7 +63,7 @@ export class CodeInterpreter {
     newLine.setAttribute('y1', this.context.penY.toString());
     newLine.setAttribute('x2', (delta + this.context.penX).toString());
     newLine.setAttribute('y2',this.context.penY.toString());
-    newLine.setAttribute("stroke", "red")
+    newLine.setAttribute("stroke", this.context.stroke)
     this.svg.append(newLine);
 
     this.pencil.setAttribute('x', (delta + this.context.pencilX).toString());

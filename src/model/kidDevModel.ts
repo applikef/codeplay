@@ -1,21 +1,21 @@
-import { StatementCode } from "./../utils/CodeInterpreter";
+import { StatementCode } from "./modelConstants";
 
-export interface KidDevCode {
-  code: Array<KidDevCodeBlock>;
+export interface KDCode {
+  code: Array<KDCodeBlock>;
 }
 
-export interface KidDevCodeBlock {
-  statements: Array<KidDevCodeStatement>;
+export interface KDCodeBlock {
+  statements: Array<KDCodeStatement>;
 }
 
-export interface KidDevCodeStatement {
+export interface KDCodeStatement {
   id: string;
   name: StatementCode;
   coords?: Array<number>;
   magnitude?: number;
 }
 
-export interface KidDevUserDescriptor {
+export interface KDUserDescriptor {
   id: string;
   displayLevel: number;
 }

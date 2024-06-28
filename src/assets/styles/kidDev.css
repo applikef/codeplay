@@ -4,12 +4,12 @@
   margin-left: 64px;
 }
 
-.kid-dev-home {
+.kd-home {
   display: flex;
   flex-direction: column;
 }
 
-.kid-dev-workbench {
+.kd-workbench {
   display: flex;
   flex-direction: row;
 }
@@ -22,18 +22,15 @@
   margin-left: 24px;
 }
 
-.kid-dev-code {
+.kd-code {
   display: flex; 
   flex-direction: column; 
-  width: 20%;
-}
-
-.kid-dev-code-action-bar {
-  margin-bottom: 16px;
 }
 
 .kd-code-area {
   border-collapse: collapse;
+  width: 200px;
+  height: fit-content;
 }
 
 .kd-statement-line {
@@ -44,12 +41,21 @@
 .kd-statement-line-icon {
   width: 40px;
   padding-right: 8px;
+  padding-top: 4px;
+  overflow:hidden;
+}
+
+.kd-statement-line-title {
+  overflow:hidden;
+}
+
+.kd-statement-line-column {
+  overflow:hidden;
 }
 
 .kd-display {
-  display: flex; 
-  flex-direction: column; 
-  width: 80%;
+  line-height: 50px; 
+  overflow:hidden;
 }
 
 .kd-display-attribute {
@@ -58,7 +64,7 @@
   padding-left: 8px;
 }
 
-.settings-area {
+.kd-settings-area {
   position: absolute;
   top: 54px;
   right: 74px;
@@ -67,10 +73,32 @@
   border: solid 1px #87ceeb;
 }
 
-.settings-display-hide {
+.kd-settings-display-hide {
   display: none;
 }
 
-.settings-display-show {
+.kd-settings-display-show {
   display: block;
+}
+
+.kd-code-area-work-area {
+  display: flex;
+  flex-direction: row;
+}
+
+.kd-statement-control-bar-global {
+  display: flex;
+  flex-direction: column;
+  padding-left: 16px;
+  border-left: solid 1px gray;
+  margin-left: 16px;
+}
+
+.kd-statement-control-bar-color-icon {
+  width: 30px;
+  height: 30px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  margin-bottom: 8px;
 }

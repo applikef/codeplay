@@ -1,10 +1,10 @@
-import { KidDevUserDescriptor } from "./../model/kidDevModel";
+import { KDUserDescriptor } from "./../model/kidDevModel";
 
-export function getUserDescriptor(userId: string): KidDevUserDescriptor {
+export function getUserDescriptor(userId: string): KDUserDescriptor {
   const descriptors = require('./../assets/userDescriptors.json');
   const users = descriptors.users;
   for (let i=0; i < users.length; i++) {
-    const user: KidDevUserDescriptor = users[i];
+    const user: KDUserDescriptor = users[i];
     if (user.id === userId) {
       return user;
     }

@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import { CodeArea } from "./CodeArea";
+import { CodeArea } from "./codeArea/CodeArea";
 import { DisplayArea } from "./DisplayArea";
-import KidDevContext, { KidDevContextType } from "./../model/KidDevContext";
+import KDContext, { KDContextType } from "./../model/KDContext";
 
 import "./../assets/styles/kidDev.css";
+import { DISPLAY_LEVEL } from "../utils/displayLevelUtil";
 
 export interface WorkBenchProps {
 }
@@ -12,12 +13,12 @@ export const Workbench = (props: WorkBenchProps) =>
 {  
   const { 
     displayLevel,
-  } = useContext(KidDevContext) as KidDevContextType;
+  } = useContext(KDContext) as KDContextType;
 
   return(
     <div className="app-page">
-      <div className="kid-dev-workbench">
-        { displayLevel > 0 &&
+      <div className="kd-workbench">
+        { displayLevel > DISPLAY_LEVEL.PENCIL_ONLY &&
           <CodeArea></CodeArea>
         }
         <DisplayArea></DisplayArea>

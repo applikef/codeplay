@@ -1,16 +1,16 @@
 import { useContext } from "react";
-import "./../assets/styles/kidDev.css";
-import KidDevContext, { KidDevContextType } from "./../model/KidDevContext";
-import { CodeInterpreter } from "./../utils/CodeInterpreter";
-import { DISPLAY_LEVEL } from "./../utils/displayLevelUtil";
+import KDContext, { KDContextType } from "./../../model/KDContext";
+import { CodeInterpreter } from "./../../utils/CodeInterpreter";
+import { DISPLAY_LEVEL } from "./../../utils/displayLevelUtil";
+import "./../../assets/styles/kidDev.css";
 
-export interface KidDevControlBarProps {
+export interface CodeAreaControlBarProps {
 
 }
 
-export const KidDevControlBar = (props: KidDevControlBarProps) => 
+export const CodeAreaControlBar = (props: CodeAreaControlBarProps) => 
 {  
-  const context = useContext(KidDevContext) as KidDevContextType;
+  const context = useContext(KDContext) as KDContextType;
   const interpreter = new CodeInterpreter(context)
 
   return(

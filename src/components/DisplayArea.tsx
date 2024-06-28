@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import KidDevContext, { KidDevContextType } from "./../model/KidDevContext";
+import KDContext, { KDContextType } from "./../model/KDContext";
 import "./../assets/styles/kidDev.css";
 
 export interface DisplayAreaProps {
@@ -13,7 +13,7 @@ export const DisplayArea = (props: DisplayAreaProps) => {
   const {
     pencilX,
     pencilY
-  } = useContext(KidDevContext) as KidDevContextType;
+  } = useContext(KDContext) as KDContextType;
 
   return(
     <div className="kd-display">

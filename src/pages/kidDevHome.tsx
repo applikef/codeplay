@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
-import KidDevContext, { KidDevContextType } from "./../model/KidDevContext";
+import KDContext, { KDContextType } from "./../model/KDContext";
 import { Workbench } from "./../components/Workbenck";
 import { KidDevBanner } from "../components/KDBanner/KDBanner";
-import { StatementCode } from "./../utils/CodeInterpreter";
 import { DISPLAY_LEVEL } from "./../utils/displayLevelUtil";
 
 import "./../assets/styles/kidDev.css";
+import { StatementCode } from "../model/modelConstants";
 
 export interface KidDevProps {
 
@@ -17,9 +17,9 @@ export const KidDev = (props: KidDevProps) =>
     displayLevel,
     setDisplayLevel,
     setCode
-  } = useContext(KidDevContext) as KidDevContextType;
+  } = useContext(KDContext) as KDContextType;
 
-  const [settingsDisplay, setSettingsDisplay] = useState<string>("settings-display-hide");
+  const [settingsDisplay, setSettingsDisplay] = useState<string>("kd-settings-display-hide");
   let newDisplayLevel = displayLevel;
 
   function initCode() {
@@ -43,12 +43,12 @@ export const KidDev = (props: KidDevProps) =>
 
   return(
     <div className="app-page">
-      <KidDevBanner settings={() => setSettingsDisplay("settings-display-show")}></KidDevBanner>
-      <div className="kid-dev-home">
+      <KidDevBanner settings={() => setSettingsDisplay("kd-settings-display-show")}></KidDevBanner>
+      <div className="kd-home">
         <Workbench />
       </div>
 
-      <div className={`settings-area ${settingsDisplay}`}>
+      <div className={`kd-settings-area ${settingsDisplay}`}>
         <span style={{paddingLeft: "10px"}}>רמה</span>          
         <input value={ displayLevel } 
           type="number" 
@@ -61,7 +61,7 @@ export const KidDev = (props: KidDevProps) =>
           }} />
         <div style={{marginTop: "8px"}}>
           <button className="app-button-ghost-sm" onClick={() => {
-            setSettingsDisplay("settings-display-hide");
+            setSettingsDisplay("kd-settings-display-hide");
           }}>סגור</button>
         </div>
       </div>
