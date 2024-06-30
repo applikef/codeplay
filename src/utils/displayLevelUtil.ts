@@ -7,3 +7,7 @@ export const enum DISPLAY_LEVEL {
   COLORS_STMTS,
   OTHER
 }
+
+export const DisplayLevelTitle = new Map<DISPLAY_LEVEL, string>([
+  [DISPLAY_LEVEL.PENCIL_ONLY,'התחלה']
+]);

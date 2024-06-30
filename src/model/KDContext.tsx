@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { KDCode, KDCodeStatement, KDPencil } from './kidDevModel';
 import { updateCodeStatement } from '../utils/statementsUtil';
+import { DEFAULT_PENCIL_POSITION } from '../constants/displayConstants';
 
 export type KDContextType = {
   displayLevel: number;
@@ -35,12 +36,7 @@ export const KidDevProvider: React.FC<React.PropsWithChildren> = ({
     setCodeState(newCode);
   }
 
-  const [pencil, setPencilState] = useState<KDPencil>({
-    x: 100,
-    y: 100,
-    penX: 162,
-    penY: 216
-  });
+  const [pencil, setPencilState] = useState<KDPencil>(DEFAULT_PENCIL_POSITION);
   const setPencil = (penX: number, penY: number) => {
     setPencilState({
       x: penX - 62,

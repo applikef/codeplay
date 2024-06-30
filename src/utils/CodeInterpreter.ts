@@ -15,7 +15,7 @@ export class CodeInterpreter {
   public pencil = document.getElementById("pencil")!;
   
   public reset() {
-    while (this.svg.lastChild) {
+    while (this.svg !== null && this.svg.lastChild) {
       this.svg.removeChild(this.svg.lastChild);
     }
 

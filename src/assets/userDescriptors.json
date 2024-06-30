@@ -1,16 +1,34 @@
 {
   "users": [
     {
-      "id": "user1",
+      "id": "level0",
+      "image": "user1.png",
       "displayLevel": 0
     },
     {
-      "id": "user2",
+      "id": "level1",
+      "image": "user2.png",
+      "displayLevel": 1
+    },
+    {
+      "id": "level2",
+      "image": "user3.png",
+      "displayLevel": 2
+    },
+    {
+      "id": "level3",
+      "image": "user2.png",
       "displayLevel": 3
     },
     {
-      "id": "user3",
-      "displayLevel": -1
+      "id": "level4",
+      "image": "user3.png",
+      "displayLevel": 4
+    },
+    {
+      "id": "level5",
+      "image": "user1.png",
+      "displayLevel": 5
     }
   ]
 }

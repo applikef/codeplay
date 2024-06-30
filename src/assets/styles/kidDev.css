@@ -1,6 +1,16 @@
 @import "./global.css";
 
+.kd-user-list {
+  display: flex;
+  flex-direction: row;
+}
+
 .kd-user-card {
+  display: flex; 
+  flex-direction: column
+}
+
+.kd-user-card-image {
   margin-left: 64px;
 }
 

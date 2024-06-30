@@ -6,6 +6,7 @@ import { DISPLAY_LEVEL } from "./../utils/displayLevelUtil";
 
 import "./../assets/styles/kidDev.css";
 import { StatementCode } from "../model/modelConstants";
+import { DEFAULT_PENCIL_POSITION } from "../constants/displayConstants";
 
 export interface KidDevProps {
 
@@ -16,6 +17,7 @@ export const KidDev = (props: KidDevProps) =>
   const { 
     displayLevel,
     setDisplayLevel,
+    setPencil,
     setCode
   } = useContext(KDContext) as KDContextType;
 
@@ -23,6 +25,7 @@ export const KidDev = (props: KidDevProps) =>
   let newDisplayLevel = displayLevel;
 
   function initCode() {
+    setPencil(DEFAULT_PENCIL_POSITION.penX, DEFAULT_PENCIL_POSITION.penY);
     if (newDisplayLevel === DISPLAY_LEVEL.JUMP_NO_ATTR) {
       setCode({code: [{statements: [{
         id: '1',

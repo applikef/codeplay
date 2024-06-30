@@ -13,5 +13,5 @@ export function getUserDescriptor(userId: string): KDUserDescriptor {
 }
 
 export function getEmptyUser() {
-  return ({id: "", displayLevel: 0});
+  return ({id: "", image: "", displayLevel: 0});
 }

@@ -43,7 +43,12 @@ export const DisplayArea = (props: DisplayAreaProps) => {
       <div>
         <div>
           { displayLevel === DISPLAY_LEVEL.PENCIL_ONLY &&
-          <span>הַקְלֵק עַל הָעַכְבָּר שֶׁעַל הַמָּסָךְ</span>
+            <div>
+              <div>הַקְלֵק עַל הָעַכְבָּר שֶׁעַל הַמָּסָךְ</div>
+              <div>
+                כְּשֶׁתַּרְגִּישׁ מוּכָן הַקְלֵק עַל תְּמוּנַת הַבַּיִת כְּדֵי לַעֲבֹר לְרָמָה גְּבוֹהָה יוֹתֵר
+              </div>
+            </div>
           }
         </div>
         <svg width={DISPLAY_WIDTH} height={DISPLAY_HEIGHT}>

@@ -24,5 +24,6 @@ export interface KDCodeStatement {
 
 export interface KDUserDescriptor {
   id: string;
+  image: string;
   displayLevel: number;
 }
