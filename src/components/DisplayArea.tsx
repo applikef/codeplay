@@ -11,15 +11,14 @@ export const DisplayArea = (props: DisplayAreaProps) => {
   const CODE_LEAD = "./resources/pencil128.png";
 
   const {
-    pencilX,
-    pencilY
+    pencil
   } = useContext(KDContext) as KDContextType;
 
   return(
     <div className="kd-display">
       <div>
         <svg width={DISPLAY_WIDTH} height={DISPLAY_HEIGHT}>
-          <image id="pencil" href={CODE_LEAD} x={pencilX} y={pencilY}></image>
+          <image id="pencil" href={CODE_LEAD} x={pencil.x} y={pencil.y}></image>
         </svg>
       </div>
       <div className="kd-display-attribute">

@@ -18,10 +18,12 @@ export const CodeArea = (props: CodeAreaProps) =>
   } = useContext(KDContext) as KDContextType;
 
   return(
-    <div className="kid-dev-code">
+    <div className="kd-code">
       <CodeAreaControlBar></CodeAreaControlBar>
       <div className="kd-code-area-work-area">
-        <StatementsControlBar></StatementsControlBar>
+        {displayLevel >= DISPLAY_LEVEL.COLORS_STMTS &&
+          <StatementsControlBar></StatementsControlBar>
+        }
         <table className="kd-code-area"><tbody>
         {
           code.code.map((block)=>block.statements.map((s,i)=>

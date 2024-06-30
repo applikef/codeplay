@@ -1,23 +1,18 @@
 import React, { useState } from 'react';
-import { KDCode, KDCodeStatement } from './kidDevModel';
+import { KDCode, KDCodeStatement, KDPencil } from './kidDevModel';
 import { updateCodeStatement } from '../utils/statementsUtil';
 
 export type KDContextType = {
   displayLevel: number;
+  pencil: KDPencil;
   code: KDCode;
-  penX: number;
-  penY: number;
-  pencilX: number;
-  pencilY: number;
   stroke: string;
 
   setDisplayLevel: (newValue: number) => void;
   setCode: (newCode: KDCode) => void;
   setCodeStatement: (newStatement: KDCodeStatement) => void;
-  setPenX: (x: number) => void;
-  setPenY: (y: number) => void;
-  setPencilX: (x: number) => void;
-  setPencilY: (y: number) => void;
+  setPencil: (penX: number, penY: number) => void;
+  setStroke: (newStroke: string) => void;
 };
 
 const KDContext = React.createContext<KDContextType | null>(null);
@@ -40,42 +35,38 @@ export const KidDevProvider: React.FC<React.PropsWithChildren> = ({
     setCodeState(newCode);
   }
 
-  const [pencilX, setPencilXState] = useState<number>(100);
-  const [pencilY, setPencilYState] = useState<number>(100);
-  const [penX, setPenXState] = useState<number>(pencilX + 62);
-  const [penY, setPenYState] = useState<number>(pencilY + 116);
-  const setPencilX = (x: number) => {
-    setPencilXState(x);
-  }
-  const setPencilY = (y: number) => {
-    setPencilYState(y);
-  }
-  const setPenX = (x: number) => {
-    setPenXState(x);
-  }
-  const setPenY = (y: number) => {
-    setPenYState(y);
+  const [pencil, setPencilState] = useState<KDPencil>({
+    x: 100,
+    y: 100,
+    penX: 162,
+    penY: 216
+  });
+  const setPencil = (penX: number, penY: number) => {
+    setPencilState({
+      x: penX - 62,
+      y: penY - 116,
+      penX: penX,
+      penY: penY
+    });
   }
   
-  const stroke = "blue";
+  const [stroke, setStrokeState] = useState<string>("blue");
+  const setStroke = (newStroke: string) => {
+    setStrokeState(newStroke);
+  }
 
   return (
     <KDContext.Provider
       value={{
         displayLevel,
+        pencil,
         code,
-        penX,
-        penY,
-        pencilX,
-        pencilY,
         stroke,
         setDisplayLevel,
+        setPencil,
         setCode,
         setCodeStatement,
-        setPenX,
-        setPenY,
-        setPencilX,
-        setPencilY
+        setStroke
       }}
     >
       {children}

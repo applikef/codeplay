@@ -4,5 +4,6 @@ export const enum DISPLAY_LEVEL {
   JUMP_READ_ONLY,
   JUMP,
   RESET,
+  COLORS_STMTS,
   OTHER
 }

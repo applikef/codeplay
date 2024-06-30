@@ -26,10 +26,7 @@ export class CodeInterpreter {
     newPencil.setAttribute('y', '100');
     this.svg.append(newPencil);
 
-    this.context.setPencilX(100);
-    this.context.setPencilY(100);
-    this.context.setPenX(100 + 62);
-    this.context.setPenY(100 + 116);
+    this.context.setPencil(162,216);
   }
 
   public execute() {
@@ -59,16 +56,15 @@ export class CodeInterpreter {
   public jump(delta: number) {
     var newLine = document.createElementNS(this.SVG_NS,'line');
     newLine.setAttribute('id', 'line2');
-    newLine.setAttribute('x1', this.context.penX.toString());
-    newLine.setAttribute('y1', this.context.penY.toString());
-    newLine.setAttribute('x2', (delta + this.context.penX).toString());
-    newLine.setAttribute('y2',this.context.penY.toString());
+    newLine.setAttribute('x1', this.context.pencil.penX.toString());
+    newLine.setAttribute('y1', this.context.pencil.penY.toString());
+    newLine.setAttribute('x2', (delta + this.context.pencil.penX).toString());
+    newLine.setAttribute('y2',this.context.pencil.penY.toString());
     newLine.setAttribute("stroke", this.context.stroke)
     this.svg.append(newLine);
 
-    this.pencil.setAttribute('x', (delta + this.context.pencilX).toString());
+    this.pencil.setAttribute('x', (delta + this.context.pencil.x).toString());
 
-    this.context.setPenX(delta + this.context.penX);
-    this.context.setPencilX(delta + this.context.pencilX);
+    this.context.setPencil(delta + this.context.pencil.penX, this.context.pencil.penY);
   } 
 }
