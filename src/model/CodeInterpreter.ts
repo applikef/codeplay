@@ -1,7 +1,7 @@
-import { StatementCode } from "../model/modelConstants";
-import { KDContextType } from "./../model/KDContext";
-import { KDCodeBlock, KDCodeStatement } from "./../model/kidDevModel";
-import { DefaultMagnitude } from "./statementsUtil";
+import { StatementCode } from "./modelConstants";
+import { KDContextType } from "./KDContext";
+import { KDCodeBlock, KDCodeStatement } from "./kidDevModel";
+import { DefaultMagnitude, DefaultStringValue } from "../utils/statementsUtil";
 
 export class CodeInterpreter { 
   private context: KDContextType;
@@ -43,17 +43,23 @@ export class CodeInterpreter {
   private executeStatement(s: KDCodeStatement, i: number) {
     switch(s.name) {
       case StatementCode.JUMP: {
-          this.jump(s.magnitude ? 
+          this.execJump(s.magnitude ? 
             s.magnitude 
           : (DefaultMagnitude.get(s.name) ? 
             DefaultMagnitude.get(s.name)
             : 100)!);
           break;
       }
+      case StatementCode.SET_STROKE: {
+          this.execSetStroke(s.stringValue ? 
+            s.stringValue 
+          : DefaultStringValue.get(s.name)!);
+          break;
+      }
     }
   }
 
-  public jump(delta: number) {
+  public execJump(delta: number) {
     var newLine = document.createElementNS(this.SVG_NS,'line');
     newLine.setAttribute('id', 'line2');
     newLine.setAttribute('x1', this.context.pencil.penX.toString());
@@ -66,5 +72,9 @@ export class CodeInterpreter {
     this.pencil.setAttribute('x', (delta + this.context.pencil.x).toString());
 
     this.context.setPencil(delta + this.context.pencil.penX, this.context.pencil.penY);
+  } 
+
+  public execSetStroke(stroke: string) {
+    this.context.setStroke(stroke)
   } 
 }

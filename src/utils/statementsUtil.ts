@@ -2,7 +2,8 @@ import { StatementCode } from "../model/modelConstants";
 import { KDCode, KDCodeBlock, KDCodeStatement } from "./../model/kidDevModel";
 
 export const StatementTitle = new Map<StatementCode, string>([
-    [StatementCode.JUMP,'זוז']
+    [StatementCode.JUMP,'התקדם'],
+    [StatementCode.SET_STROKE,'צבע עפרון']
 ]);
   
 export const MagnitudeTitle = new Map<StatementCode, string>([
@@ -11,6 +12,10 @@ export const MagnitudeTitle = new Map<StatementCode, string>([
   
 export const DefaultMagnitude = new Map<StatementCode, number>([
     [StatementCode.JUMP,50]
+]);
+
+export const DefaultStringValue = new Map<StatementCode, string>([
+    [StatementCode.SET_STROKE,"#00ff00"]
 ]);
 
 export function updateCodeStatement(code: KDCode, newStatement: KDCodeStatement): KDCode {
@@ -23,5 +28,10 @@ export function updateCodeStatement(code: KDCode, newStatement: KDCodeStatement)
             }
         }
     }
+    return code;
+};
+
+export function addStatement(code: KDCode, newStatement: KDCodeStatement): KDCode {
+    code.code[code.code.length-1].statements.push(newStatement);
     return code;
 };

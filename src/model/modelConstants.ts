@@ -1,4 +1,5 @@
 export enum StatementCode {
-  JUMP
+  JUMP,
+  SET_STROKE
 }
 

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import KDContext, { KDContextType } from "./../../model/KDContext";
-import { CodeInterpreter } from "./../../utils/CodeInterpreter";
+import { CodeInterpreter } from "../../model/CodeInterpreter";
 import { DISPLAY_LEVEL } from "./../../utils/displayLevelUtil";
 import "./../../assets/styles/kidDev.css";
 

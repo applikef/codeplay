@@ -1,0 +1,26 @@
+@import url('./../../../assets/styles/kidDev.css');
+
+.kd-statement-line {
+  display: flex;
+  flex-direction: row;
+  
+  background-color: #f0f8ff;
+  border: solid 1px #6495ed;
+}
+
+.kd-statement-line-icon {
+  width: 40px;
+  padding-right: 8px;
+  padding-top: 4px;
+}
+
+.kd-statement-line-title {
+  padding-left: 8px;
+  align-self: center;
+}
+
+.kd-statement-line-parameters {
+  padding-left: 8px;
+  align-self: center;
+}
+

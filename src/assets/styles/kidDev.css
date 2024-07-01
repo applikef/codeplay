@@ -38,29 +38,8 @@
 }
 
 .kd-code-area {
-  border-collapse: collapse;
-  width: 200px;
-  height: fit-content;
-}
-
-.kd-statement-line {
-  background-color: #f0f8ff;
-  border: solid 1px #6495ed;
-}
-
-.kd-statement-line-icon {
-  width: 40px;
-  padding-right: 8px;
-  padding-top: 4px;
-  overflow:hidden;
-}
-
-.kd-statement-line-title {
-  overflow:hidden;
-}
-
-.kd-statement-line-column {
-  overflow:hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .kd-display {

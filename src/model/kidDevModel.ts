@@ -19,6 +19,7 @@ export interface KDCodeStatement {
   id: string;
   name: StatementCode;
   coords?: Array<number>;
+  stringValue?: string;
   magnitude?: number;
 }
 
