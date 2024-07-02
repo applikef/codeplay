@@ -1,11 +1,13 @@
-import { useContext } from "react";
-import KDContext, { KDContextType } from "../../model/KDContext";
-import "./../../assets/styles/kidDev.css";
+import { useContext, useRef, useState } from "react";
 import { StrokeColors, StrokeColorsHex } from "../../constants/displayConstants";
 import { KDCodeStatement } from "../../model/kidDevModel";
-import { StatementCode } from "../../model/modelConstants";
-import { addStatement } from "../../utils/statementsUtil";
+import { StatementCode } from "../../constants/modelConstants";
 import { getTimestamp } from "../../utils/generalUtils";
+import "./CodeArea.css";
+import KDContext, { KDContextType } from "../../model/KDContext";
+import { DISPLAY_LEVEL } from "../../utils/displayLevelUtil";
+import { KD_APP_STRINGS } from "../../constants/appStrings";
+import { DefaultMagnitude } from "../../constants/modelConstants";
 
 export interface StatementsControlBarProps {
   updateCode: Function;
@@ -13,10 +15,56 @@ export interface StatementsControlBarProps {
 
 export const StatementsControlBar = (props: StatementsControlBarProps) => 
 {  
+  const menuEntryIds: Array<string> = [
+    "movement",
+    "look"
+  ];
+
+  const MenuEntries = new Map<string, any>([
+    ["movement", {
+      id: "movement",
+      title: "תנועה",
+      showClass: "kd-movement-menu-show",
+      hideClass: "kd-movement-menu-hide"
+    }],
+    ["look", {
+      id: "look",
+      title: "מראה",
+      showClass: "kd-look-menu-show",
+      hideClass: "kd-look-menu-hide"
+    }]
+  ]);
+
+  function hideAllEntries() {
+      let e = new Map<string, string>();
+      for (let i=0; i<menuEntryIds.length; i++) {
+        e.set(menuEntryIds[i], MenuEntries.get(menuEntryIds[i]).hideClass);
+      }
+      return(e);
+  }
+
   const {
-    code,
-    setCode
+    displayLevel,
   } = useContext(KDContext) as KDContextType;
+
+  const [submenusClass, setSubmenusClass] = useState<any>(hideAllEntries())
+
+  const showColorsBar = useRef<boolean>(displayLevel < DISPLAY_LEVEL.STATEMENT_GROUPS? true : false);
+
+  function showSubMenu(menuId: string) {
+    let newState = hideAllEntries();
+    newState.set(menuId, MenuEntries.get(menuId).showClass);
+    setSubmenusClass(newState);
+  }
+
+  function addJumpStatement() {
+    const jumpStatement: KDCodeStatement = {
+      id: getTimestamp(),
+      name: StatementCode.JUMP,
+      magnitude: DefaultMagnitude.get(StatementCode.JUMP)      
+    }; 
+    props.updateCode(jumpStatement);
+  }
 
   function addStrokeStatement(strokeHex: string) {
     const setStrokeStatement: KDCodeStatement = {
@@ -25,19 +73,40 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
       stringValue: strokeHex
     }; 
     props.updateCode(setStrokeStatement);
-    // setCode(addStatement(code, setStrokeStatement));
   }
 
   return (
     <div className="kd-statement-control-bar-global">
-      { StrokeColors.map((color, i) => 
-          <div className="kd-statement-control-bar-color-icon" 
-            key={color}
-            style={{ "background": StrokeColorsHex.get(color) }}
-            onClick={() => addStrokeStatement(StrokeColorsHex.get(color)!)}>
+      {displayLevel >= DISPLAY_LEVEL.STATEMENT_GROUPS &&
+        <div className="kd-statement-control-main-menu"> {
+          menuEntryIds.map((entryId) => 
+            <div onClick={() => showSubMenu(entryId)} key={entryId}
+              className="kd-statement-control-bar-menu-entry">
+              { MenuEntries.get(entryId).title }
+            </div>
+          )
+        }
+        </div>
+      }
+      <div className="kd-statement-control-submenu">
+        <div className={submenusClass.get("movement")}>
+          <div>
+            <img src="./resources/jump32.png" alt={KD_APP_STRINGS.JUMP}
+              onClick={() => addJumpStatement()}
+            />
           </div>
-      )
-    }
+        </div>
+        <div className={showColorsBar.current ? "" : submenusClass.get("look")}>
+        { StrokeColors.map((color, i) => 
+            <div className="kd-statement-control-bar-color-icon" 
+              key={color}
+              style={{ "background": StrokeColorsHex.get(color) }}
+              onClick={() => addStrokeStatement(StrokeColorsHex.get(color)!)}>
+            </div>
+          )
+        }
+        </div>
+      </div>
     </div>
   )
 }

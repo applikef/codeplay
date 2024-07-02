@@ -4,7 +4,7 @@ import KDContext, { KDContextType } from "../../../model/KDContext";
 import "./StatementLine.css";
 import { JumpStatement } from "./JumpStatement";
 import { SetStrokeStatement } from "./SetStrokeStatement";
-import { StatementCode } from "../../../model/modelConstants";
+import { StatementCode } from "../../../constants/modelConstants";
 
 export interface StatementLineProps {
   statement: KDCodeStatement;

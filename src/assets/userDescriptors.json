@@ -29,6 +29,11 @@
       "id": "level5",
       "image": "user1.png",
       "displayLevel": 5
+    },
+    {
+      "id": "level6",
+      "image": "user2.png",
+      "displayLevel": 6
     }
   ]
 }

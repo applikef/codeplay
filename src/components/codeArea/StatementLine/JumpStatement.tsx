@@ -1,7 +1,7 @@
 import { ChangeEvent, useContext, useState } from "react";
 import { KDCodeStatement } from "../../../model/kidDevModel";
 import './StatementLine.css';
-import { MagnitudeTitle, StatementTitle } from "../../../utils/statementsUtil";
+import { MagnitudeTitle, StatementTitle } from "./../../../constants/modelConstants";
 import KDContext, { KDContextType } from "../../../model/KDContext";
 
 export interface JumpStatementProps {

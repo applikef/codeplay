@@ -1,22 +1,4 @@
-import { StatementCode } from "../model/modelConstants";
 import { KDCode, KDCodeBlock, KDCodeStatement } from "./../model/kidDevModel";
-
-export const StatementTitle = new Map<StatementCode, string>([
-    [StatementCode.JUMP,'התקדם'],
-    [StatementCode.SET_STROKE,'צבע עפרון']
-]);
-  
-export const MagnitudeTitle = new Map<StatementCode, string>([
-    [StatementCode.JUMP,'צעדים']
-]);
-  
-export const DefaultMagnitude = new Map<StatementCode, number>([
-    [StatementCode.JUMP,50]
-]);
-
-export const DefaultStringValue = new Map<StatementCode, string>([
-    [StatementCode.SET_STROKE,"#00ff00"]
-]);
 
 export function updateCodeStatement(code: KDCode, newStatement: KDCodeStatement): KDCode {
     for (let i = 0; i < code.code.length; i++) {

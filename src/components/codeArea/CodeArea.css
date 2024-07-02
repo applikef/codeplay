@@ -1,0 +1,57 @@
+@import url('./../../assets/styles/kidDev.css');
+
+.kd-code-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.kd-code-area-work-area {
+  display: flex;
+  flex-direction: row;
+}
+
+.kd-statement-control-bar-global {
+  display: flex;
+  flex-direction: row;
+  padding-left: 16px;
+  border-left: solid 1px gray;
+  margin-left: 16px;
+}
+
+.kd-statement-control-bar-color-icon {
+  width: 30px;
+  height: 30px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  margin-bottom: 8px;
+}
+
+.kd-statement-control-main-menu {
+  width: 64px;
+}
+
+.kd-statement-control-submenu {
+  width: 32px;
+}
+
+.kd-statement-control-bar-menu-entry {
+  font-weight: bold;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.kd-movement-menu-show {
+  display: inline;
+}
+
+.kd-movement-menu-hide {
+  display: none;
+}
+
+.kd-look-menu-show {
+  display: inline;
+}
+.kd-look-menu-hide {
+  display: none;
+}

@@ -5,7 +5,7 @@ import { KidDevBanner } from "../components/KDBanner/KDBanner";
 import { DISPLAY_LEVEL } from "./../utils/displayLevelUtil";
 
 import "./../assets/styles/kidDev.css";
-import { StatementCode } from "../model/modelConstants";
+import { StatementCode } from "../constants/modelConstants";
 import { DEFAULT_PENCIL_POSITION } from "../constants/displayConstants";
 
 export interface KidDevProps {

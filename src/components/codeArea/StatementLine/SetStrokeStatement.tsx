@@ -1,7 +1,7 @@
 import { ChangeEvent, useContext, useState } from "react";
 import { KDCodeStatement } from "../../../model/kidDevModel";
-import { StatementCode } from "../../../model/modelConstants";
-import { DefaultStringValue, StatementTitle } from "../../../utils/statementsUtil";
+import { StatementCode } from "../../../constants/modelConstants";
+import { DefaultStringValue, StatementTitle } from "../../../constants/modelConstants";
 import './StatementLine.css';
 import KDContext, { KDContextType } from "../../../model/KDContext";
 

@@ -5,8 +5,9 @@ import { useContext } from "react";
 import KDContext, { KDContextType } from "./../model/KDContext";
 import { KDCode, KDUserDescriptor } from "./../model/kidDevModel";
 import { DISPLAY_LEVEL, DisplayLevelTitle } from "./../utils/displayLevelUtil";
-import { StatementCode } from "../model/modelConstants";
+import { StatementCode } from "../constants/modelConstants";
 import { DEFAULT_PENCIL_POSITION } from "../constants/displayConstants";
+import { KD_APP_STRINGS } from "../constants/appStrings";
 
 export const KidDevLanding = () => {
   const navigate = useNavigate();
@@ -75,7 +76,7 @@ export const KidDevLanding = () => {
             <div>{
               DisplayLevelTitle.get(user.displayLevel) ? 
                 DisplayLevelTitle.get(user.displayLevel)
-              : `רמה ${user.displayLevel}`}
+              : `${KD_APP_STRINGS.STAGE} ${user.displayLevel}`}
             </div>
           </div>
         )}

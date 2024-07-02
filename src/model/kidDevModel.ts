@@ -1,4 +1,4 @@
-import { StatementCode } from "./modelConstants";
+import { StatementCode } from "../constants/modelConstants";
 
 export interface KDPencil {
   x: number;

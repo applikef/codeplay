@@ -37,11 +37,6 @@
   flex-direction: column; 
 }
 
-.kd-code-area {
-  display: flex;
-  flex-direction: column;
-}
-
 .kd-display {
   line-height: 50px; 
   overflow:hidden;
@@ -68,26 +63,4 @@
 
 .kd-settings-display-show {
   display: block;
-}
-
-.kd-code-area-work-area {
-  display: flex;
-  flex-direction: row;
-}
-
-.kd-statement-control-bar-global {
-  display: flex;
-  flex-direction: column;
-  padding-left: 16px;
-  border-left: solid 1px gray;
-  margin-left: 16px;
-}
-
-.kd-statement-control-bar-color-icon {
-  width: 30px;
-  height: 30px;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
-  margin-bottom: 8px;
 }

@@ -2,6 +2,7 @@ import { useContext } from "react";
 import KDContext, { KDContextType } from "./../model/KDContext";
 import "./../assets/styles/kidDev.css";
 import { DISPLAY_LEVEL } from "../utils/displayLevelUtil";
+import { KD_APP_STRINGS } from "../constants/appStrings";
 
 export interface DisplayAreaProps {
 }
@@ -44,9 +45,9 @@ export const DisplayArea = (props: DisplayAreaProps) => {
         <div>
           { displayLevel === DISPLAY_LEVEL.PENCIL_ONLY &&
             <div>
-              <div>הַקְלֵק עַל הָעַכְבָּר שֶׁעַל הַמָּסָךְ</div>
+              <div>{ KD_APP_STRINGS.MOUSE_CLICK }</div>
               <div>
-                כְּשֶׁתַּרְגִּישׁ מוּכָן הַקְלֵק עַל תְּמוּנַת הַבַּיִת כְּדֵי לַעֲבֹר לְרָמָה גְּבוֹהָה יוֹתֵר
+                { KD_APP_STRINGS.NEXT_STEP }
               </div>
             </div>
           }
