@@ -8,7 +8,6 @@ import { StatementCode } from "../../../constants/modelConstants";
 
 export interface StatementLineProps {
   statement: KDCodeStatement;
-  readOnly: boolean;
 }
 
 export const StatementLine = (props: StatementLineProps) => 
@@ -16,11 +15,11 @@ export const StatementLine = (props: StatementLineProps) =>
   return(
     <div>
       { props.statement.name === StatementCode.JUMP && 
-        <JumpStatement statement={props.statement} readOnly={props.readOnly} />
+        <JumpStatement statement={props.statement} />
       }
       {
       props.statement.name === StatementCode.SET_STROKE && 
-        <SetStrokeStatement statement={props.statement} readOnly={false} /> 
+        <SetStrokeStatement statement={props.statement} /> 
       }
     </div>
     

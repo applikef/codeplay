@@ -3,16 +3,17 @@ import { KDCodeStatement } from "../../../model/kidDevModel";
 import './StatementLine.css';
 import { MagnitudeTitle, StatementTitle } from "./../../../constants/modelConstants";
 import KDContext, { KDContextType } from "../../../model/KDContext";
+import { DISPLAY_LEVEL } from "../../../utils/displayLevelUtil";
 
 export interface JumpStatementProps {
   statement: KDCodeStatement;
-  readOnly: boolean;
 }
 
 export const JumpStatement = (props: JumpStatementProps) => 
 {
   const s: KDCodeStatement = props.statement;
   const {
+    displayLevel,
     setCodeStatement
   } = useContext(KDContext) as KDContextType;
  
@@ -27,7 +28,7 @@ export const JumpStatement = (props: JumpStatementProps) =>
           title="התקדם"  alt="התקדם"/>
       </div>
       <div className="kd-statement-line-title">{StatementTitle.get(s.name)}</div>
-      {props.readOnly ?
+      {displayLevel <= DISPLAY_LEVEL.JUMP_NO_ATTR ?
         <div className="kd-statement-line-parameters">
           {s.magnitude ? `${s.magnitude} ${MagnitudeTitle.get(s.name) ? MagnitudeTitle.get(s.name) : ""}` : ""}
         </div>

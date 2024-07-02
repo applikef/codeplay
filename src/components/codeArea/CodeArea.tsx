@@ -37,7 +37,7 @@ export const CodeArea = (props: CodeAreaProps) =>
         <div className="kd-code-area">
         { codeLength > 0 &&
           code.code.map((block)=>block.statements.map((s,i)=>
-            <StatementLine statement={s} readOnly={displayLevel < DISPLAY_LEVEL.JUMP} key={i} />))
+            <StatementLine statement={s} key={i} />))
         }
         </div>
       </div>

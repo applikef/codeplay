@@ -38,7 +38,7 @@ export const KidDevLanding = () => {
         name: StatementCode.JUMP
       }]}]});
     }  
-    else if (userDisplayLevel === DISPLAY_LEVEL.JUMP_READ_ONLY || userDisplayLevel === DISPLAY_LEVEL.JUMP) {
+    else if (userDisplayLevel === DISPLAY_LEVEL.JUMP) {
       return ({code: [{statements: [{
         id: '1',
         name: StatementCode.JUMP,

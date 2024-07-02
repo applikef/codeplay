@@ -7,7 +7,6 @@ import KDContext, { KDContextType } from "../../../model/KDContext";
 
 export interface SetStrokeStatementProps {
   statement: KDCodeStatement;
-  readOnly: boolean;
 }
 
 export const SetStrokeStatement = (props: SetStrokeStatementProps) => 
@@ -32,11 +31,7 @@ export const SetStrokeStatement = (props: SetStrokeStatementProps) =>
         </div>
       </div>
       <div className="kd-statement-line-title">{StatementTitle.get(s.name)}</div>
-      {props.readOnly ?
         <div className="kd-statement-line-parameters">
-          { strokeColor }
-        </div>
-      : <div className="kd-statement-line-parameters">
           <div style={{display: "flex"}}>
             <input value={strokeColor}
               style={{width: "50px", marginLeft: "8px"}}
@@ -48,7 +43,6 @@ export const SetStrokeStatement = (props: SetStrokeStatementProps) =>
             </input>
           </div>
         </div>
-      }
     </div>
   )
 }

@@ -29,7 +29,7 @@ export const KidDev = (props: KidDevProps) =>
         name: StatementCode.JUMP
       }]}]});
     }  
-    else if (newDisplayLevel === DISPLAY_LEVEL.JUMP_READ_ONLY || newDisplayLevel === DISPLAY_LEVEL.JUMP) {
+    else if (newDisplayLevel === DISPLAY_LEVEL.JUMP) {
       setCode({code: [{statements: [{
         id: '1',
         name: StatementCode.JUMP,
