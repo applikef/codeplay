@@ -1,19 +1,14 @@
 import React, { useState } from 'react';
-import { KDCode, KDCodeStatement, KDPencil } from './kidDevModel';
+import { KDCode, KDCodeStatement } from './kidDevModel';
 import { updateCodeStatement } from '../utils/statementsUtil';
-import { DEFAULT_PENCIL_POSITION } from '../constants/displayConstants';
 
 export type KDContextType = {
   displayLevel: number;
-  pencil: KDPencil;
   code: KDCode;
-  stroke: string;
 
   setDisplayLevel: (newValue: number) => void;
   setCode: (newCode: KDCode) => void;
   setCodeStatement: (newStatement: KDCodeStatement) => void;
-  setPencil: (penX: number, penY: number) => void;
-  setStroke: (newStroke: string) => void;
 };
 
 const KDContext = React.createContext<KDContextType | null>(null);
@@ -36,33 +31,18 @@ export const KidDevProvider: React.FC<React.PropsWithChildren> = ({
     setCodeState(newCode);
   }
 
-  const [pencil, setPencilState] = useState<KDPencil>(DEFAULT_PENCIL_POSITION);
-  const setPencil = (penX: number, penY: number) => {
-    setPencilState({
-      x: penX - 62,
-      y: penY - 116,
-      penX: penX,
-      penY: penY
-    });
-  }
-  
-  const [stroke, setStrokeState] = useState<string>("blue");
-  const setStroke = (newStroke: string) => {
-    setStrokeState(newStroke);
-  }
-
   return (
     <KDContext.Provider
       value={{
         displayLevel,
-        pencil,
+        //pencil,
         code,
-        stroke,
+        //stroke,
         setDisplayLevel,
-        setPencil,
+        //setPencil,
         setCode,
         setCodeStatement,
-        setStroke
+        //setStroke
       }}
     >
       {children}

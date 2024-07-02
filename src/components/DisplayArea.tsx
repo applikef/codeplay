@@ -1,8 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import KDContext, { KDContextType } from "./../model/KDContext";
 import "./../assets/styles/kidDev.css";
 import { DISPLAY_LEVEL } from "../utils/displayLevelUtil";
 import { KD_APP_STRINGS } from "../constants/appStrings";
+import { KDPencil } from "../model/kidDevModel";
+import { DEFAULT_PENCIL_PEN_DELTA_X, DEFAULT_PENCIL_PEN_DELTA_Y, DEFAULT_PENCIL_POSITION } from "../constants/displayConstants";
 
 export interface DisplayAreaProps {
 }
@@ -15,13 +17,18 @@ export const DisplayArea = (props: DisplayAreaProps) => {
 
   const {
     displayLevel,
-    pencil,
-    setPencil
   } = useContext(KDContext) as KDContextType;
+
+  const [pencil, setPencil] = useState<KDPencil>(DEFAULT_PENCIL_POSITION);
 
   const defineNextPosition = () => {
     const newPosition = getRandomPosition();
-    setPencil(newPosition[0], newPosition[1]);
+    setPencil({
+      x: newPosition[0] - DEFAULT_PENCIL_PEN_DELTA_X,
+      y: newPosition[1] - DEFAULT_PENCIL_PEN_DELTA_Y,
+      penX: newPosition[0],
+      penY: newPosition[1]
+    })
   }
 
   const getRandomPosition = (): [number,number] => {

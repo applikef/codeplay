@@ -6,14 +6,12 @@ import KDContext, { KDContextType } from "./../model/KDContext";
 import { KDCode, KDUserDescriptor } from "./../model/kidDevModel";
 import { DISPLAY_LEVEL, DisplayLevelTitle } from "./../utils/displayLevelUtil";
 import { StatementCode } from "../constants/modelConstants";
-import { DEFAULT_PENCIL_POSITION } from "../constants/displayConstants";
 import { KD_APP_STRINGS } from "../constants/appStrings";
 
 export const KidDevLanding = () => {
   const navigate = useNavigate();
   const { 
     setDisplayLevel,
-    setPencil,
     setCode
   } = useContext(KDContext) as KDContextType;
 
@@ -33,7 +31,6 @@ export const KidDevLanding = () => {
   }
 
   function initCode(): KDCode {
-    setPencil(DEFAULT_PENCIL_POSITION.penX, DEFAULT_PENCIL_POSITION.penY);
     if (userDisplayLevel === DISPLAY_LEVEL.JUMP_NO_ATTR) {
       return ({code: [{statements: [{
         id: '1',

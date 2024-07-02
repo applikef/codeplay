@@ -7,6 +7,9 @@ export const DEFAULT_PENCIL_POSITION: KDPencil = {
   penY: 216
 }
 
+export const DEFAULT_PENCIL_PEN_DELTA_X = 62;
+export const DEFAULT_PENCIL_PEN_DELTA_Y = 116;
+
 export const StrokeColors: Array<string> = [
   "RED",
   "GREEN",

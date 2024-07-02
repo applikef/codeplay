@@ -1,17 +1,31 @@
 import { StatementCode } from "../constants/modelConstants";
 import { KDContextType } from "./KDContext";
-import { KDCodeBlock, KDCodeStatement } from "./kidDevModel";
+import { KDCode, KDCodeBlock, KDCodeStatement, KDPencil } from "./kidDevModel";
 import { DefaultMagnitude, DefaultStringValue } from "./../constants/modelConstants";
+import { DEFAULT_PENCIL_PEN_DELTA_X, DEFAULT_PENCIL_PEN_DELTA_Y, DEFAULT_PENCIL_POSITION } from "../constants/displayConstants";
 
 export class CodeInterpreter { 
-  private context: KDContextType;
+  private displayLevel: number;
+  private code: KDCode;
 
   constructor(context: KDContextType) {
-    this.context = context;
+    this.displayLevel = context.displayLevel;
+    this.code = context.code;
   }
 
   private SVG_NS = 'http://www.w3.org/2000/svg';
-  
+  private pencil:KDPencil = DEFAULT_PENCIL_POSITION;
+  private stroke: string = "#0000ff";
+
+  private setPencil(penX: number, penY: number) {
+    this.pencil = {
+      x: penX - DEFAULT_PENCIL_PEN_DELTA_X,
+      y: penY - DEFAULT_PENCIL_PEN_DELTA_Y,
+      penX: penX,
+      penY: penY
+    };
+  }
+
   public reset() {
     const svg: SVGElement = document.querySelector("svg")!;
     while (svg !== null && svg.lastChild) {
@@ -25,16 +39,15 @@ export class CodeInterpreter {
     newPencil.setAttribute('y', '100');
     svg.append(newPencil);
     
-    this.context.setPencil(162,216);
+    this.setPencil(162,216);
   }
 
   public execute() {
-    if (this.context.displayLevel === 0) {
+    if (this.displayLevel === 0) {
       return;
     }
 
-    this.reset();
-    this.context.code.code.map((block: KDCodeBlock)=>block.statements.map((s,i)=>
+    this.code.code.map((block: KDCodeBlock)=>block.statements.map((s,i)=>
       this.executeStatement(s,i)
     ))
   }
@@ -64,18 +77,18 @@ export class CodeInterpreter {
 
     var newLine = document.createElementNS(this.SVG_NS,'line');
     newLine.setAttribute('id', 'line2');
-    newLine.setAttribute('x1', this.context.pencil.penX.toString());
-    newLine.setAttribute('y1', this.context.pencil.penY.toString());
-    newLine.setAttribute('x2', (delta + this.context.pencil.penX).toString());
-    newLine.setAttribute('y2',this.context.pencil.penY.toString());
-    newLine.setAttribute("stroke", this.context.stroke)
+    newLine.setAttribute('x1', this.pencil.penX.toString());
+    newLine.setAttribute('y1', this.pencil.penY.toString());
+    newLine.setAttribute('x2', (delta + this.pencil.penX).toString());
+    newLine.setAttribute('y2',this.pencil.penY.toString());
+    newLine.setAttribute("stroke", this.stroke)
     svg.append(newLine);
 
-    pencil.setAttribute('x', (delta + this.context.pencil.x).toString());
-    this.context.setPencil(delta + this.context.pencil.penX, this.context.pencil.penY);
+    pencil.setAttribute('x', (delta + this.pencil.x).toString());
+    this.setPencil(delta + this.pencil.penX, this.pencil.penY);
   } 
 
   public execSetStroke(stroke: string) {
-    this.context.setStroke(stroke)
+    this.stroke = stroke;
   } 
 }
