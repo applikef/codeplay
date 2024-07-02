@@ -18,7 +18,7 @@ export const KidDevBanner = (props: KidDevBannerProps) => {
         <div className="banner-icon-bar">
           <div className="banner-right-icon-bar">
             <Link to="/">
-              <img src="resources/icons/home128.png" className="banner-icon" 
+              <img src="resources/icons/home128.png" className="banner-icon app-clickable" 
                 title="עמוד הבית"  alt="עמוד הבית" />
             </Link>
             { displayLevel === DISPLAY_LEVEL.OTHER-1 &&

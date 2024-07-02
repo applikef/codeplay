@@ -11,6 +11,7 @@ import { KD_APP_STRINGS } from "../constants/appStrings";
 export const KidDevLanding = () => {
   const navigate = useNavigate();
   const { 
+    displayLevel,
     setDisplayLevel,
     setCode
   } = useContext(KDContext) as KDContextType;
@@ -61,16 +62,17 @@ export const KidDevLanding = () => {
       </h2>
       <br/>
       <div className="kd-user-list">
-        {users.map((user: KDUserDescriptor, i: number) =>
+        {users.map((user: KDUserDescriptor, i: number) => 
           <div className="kd-user-card" key={user.id}>
             <img src={`./resources/users/${user.image}`} alt={user.id} height={100}
-              className="app-clickable kd-user-card-image"
+              className={`app-clickable kd-user-card-image ${user.displayLevel === displayLevel ? "kd-user-card-image-selected": ""}`} 
               onClick={() => openApp(user.id)}
               style={{ marginTop: i*32}}
               title={DisplayLevelTitle.get(user.displayLevel) ? 
                 DisplayLevelTitle.get(user.displayLevel)
               : `רמה ${user.displayLevel}`}/>
-            <div>{
+            <div 
+              className={user.displayLevel === displayLevel ? "kd-user-card-title-selected" : ""}>{
               DisplayLevelTitle.get(user.displayLevel) ? 
                 DisplayLevelTitle.get(user.displayLevel)
               : `${KD_APP_STRINGS.STAGE} ${user.displayLevel}`}

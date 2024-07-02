@@ -12,6 +12,16 @@
 
 .kd-user-card-image {
   margin-left: 64px;
+  padding: 8px;  
+}
+
+.kd-user-card-image-selected {
+  background-color: #f0f8ff;
+  border: solid 1px #6495ed;
+}
+
+.kd-user-card-title-selected {
+  font-weight: bold;
 }
 
 .kd-home {

@@ -15,11 +15,11 @@ export const CodeAreaControlBar = (props: CodeAreaControlBarProps) =>
 
   return(
     <div className="kd-control-bar">
-      <img src="resources/play32.png" className="kd-control-bar-icon"
+      <img src="resources/play32.png" className="kd-control-bar-icon app-clickable"
         title="בצע"  alt="בצע"
         onClick={() => interpreter.execute()}/>
       { context.displayLevel >= DISPLAY_LEVEL.RESET &&
-        <img src="resources/reset32.png" className="kd-control-bar-icon"
+        <img src="resources/reset32.png" className="kd-control-bar-icon app-clickable"
           title="מחק הכל"  alt="מחק הכל"
           onClick={() => interpreter.reset()}/>
       }
