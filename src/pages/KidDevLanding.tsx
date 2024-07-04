@@ -37,7 +37,7 @@ export const KidDevLanding = () => {
     <div className="app-page">
       <h1>מי אני?</h1>
       <h2>
-        הַתְחֵל בְּרָמַת הַתְחָלָה 
+        { KD_APP_STRINGS.START_IN_ZERO }
       </h2>
       <br/>
       <div className="kd-user-list">
