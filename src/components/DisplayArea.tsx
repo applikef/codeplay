@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import KDContext, { KDContextType } from "./../model/KDContext";
 import "./../assets/styles/kidDev.css";
-import { DISPLAY_LEVEL } from "../utils/displayLevelUtil";
+import { DISPLAY_LEVEL } from "../constants/displayLevelConstants";
 import { KD_APP_STRINGS } from "../constants/appStrings";
 import { KDPencil } from "../model/kidDevModel";
 import { DEFAULT_PENCIL_PEN_DELTA_X, DEFAULT_PENCIL_PEN_DELTA_Y, DEFAULT_PENCIL_POSITION } from "../constants/displayConstants";

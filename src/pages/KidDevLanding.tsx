@@ -4,9 +4,10 @@ import { getUserDescriptor } from "./../utils/usersUtil";
 import { useContext } from "react";
 import KDContext, { KDContextType } from "./../model/KDContext";
 import { KDCode, KDUserDescriptor } from "./../model/kidDevModel";
-import { DISPLAY_LEVEL, DisplayLevelTitle } from "./../utils/displayLevelUtil";
+import { DISPLAY_LEVEL, DisplayLevelTitle } from "../constants/displayLevelConstants";
 import { StatementCode } from "../constants/modelConstants";
 import { KD_APP_STRINGS } from "../constants/appStrings";
+import { initCode } from "../utils/codeUtil";
 
 export const KidDevLanding = () => {
   const navigate = useNavigate();
@@ -27,31 +28,8 @@ export const KidDevLanding = () => {
       userDescriptor.displayLevel
     : DISPLAY_LEVEL.OTHER;
     setDisplayLevel(userDisplayLevel);
-    setCode(initCode());
+    setCode(initCode(userDisplayLevel));
     navigate('/home');      
-  }
-
-  function initCode(): KDCode {
-    if (userDisplayLevel === DISPLAY_LEVEL.JUMP_NO_ATTR) {
-      return ({code: [{statements: [{
-        id: '1',
-        name: StatementCode.JUMP
-      }]}]});
-    }  
-    else if (userDisplayLevel === DISPLAY_LEVEL.JUMP) {
-      return ({code: [{statements: [{
-        id: '1',
-        name: StatementCode.JUMP,
-        magnitude: 20
-      }]}]});
-    }
-    else {
-      return ({code: [{statements: [{
-        id: '1',
-        name: StatementCode.JUMP,
-        magnitude: 100
-      }]}]});
-    }
   }
 
   return (

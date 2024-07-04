@@ -1,7 +1,7 @@
 import { StatementCode } from "../constants/modelConstants";
 import { KDContextType } from "./KDContext";
 import { KDCode, KDCodeBlock, KDCodeStatement, KDPencil } from "./kidDevModel";
-import { DefaultMagnitude, DefaultStringValue } from "./../constants/modelConstants";
+import { DefaultNumberValue, DefaultStringValue } from "./../constants/modelConstants";
 import { DEFAULT_PENCIL_PEN_DELTA_X, DEFAULT_PENCIL_PEN_DELTA_Y, DEFAULT_PENCIL_POSITION } from "../constants/displayConstants";
 
 export class CodeInterpreter { 
@@ -55,10 +55,10 @@ export class CodeInterpreter {
   private executeStatement(s: KDCodeStatement, i: number) {
     switch(s.name) {
       case StatementCode.JUMP: {
-          this.execJump(s.magnitude ? 
-            s.magnitude 
-          : (DefaultMagnitude.get(s.name) ? 
-            DefaultMagnitude.get(s.name)
+          this.execJump(s.numberValue ? 
+            s.numberValue 
+          : (DefaultNumberValue.get(s.name) ? 
+            DefaultNumberValue.get(s.name)
             : 100)!);
           break;
       }

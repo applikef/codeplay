@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./KDBanner.css";
-import { DISPLAY_LEVEL } from "../../utils/displayLevelUtil";
+import { DISPLAY_LEVEL } from "../../constants/displayLevelConstants";
 import KDContext, { KDContextType } from "../../model/KDContext";
 import { useContext } from "react";
 

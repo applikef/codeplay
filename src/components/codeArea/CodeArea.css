@@ -42,6 +42,16 @@
   color: #6BAFD6;
 }
 
+.kd-statement-line-global {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 4px;
+}
+
+.kd-statement-line-icons {
+  padding: 8px;
+}
+
 .kd-movement-menu-show {
   display: inline;
 }

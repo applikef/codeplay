@@ -1,9 +1,9 @@
 import { ChangeEvent, useContext, useState } from "react";
 import { KDCodeStatement } from "../../../model/kidDevModel";
 import './StatementLine.css';
-import { MagnitudeTitle, StatementTitle } from "./../../../constants/modelConstants";
+import { NumberValueTitle, StatementTitle } from "./../../../constants/modelConstants";
 import KDContext, { KDContextType } from "../../../model/KDContext";
-import { DISPLAY_LEVEL } from "../../../utils/displayLevelUtil";
+import { DISPLAY_LEVEL } from "../../../constants/displayLevelConstants";
 
 export interface JumpStatementProps {
   statement: KDCodeStatement;
@@ -18,7 +18,7 @@ export const JumpStatement = (props: JumpStatementProps) =>
   } = useContext(KDContext) as KDContextType;
  
   const [numberInput, setNumberInput] = useState<number>(
-    (s.magnitude !== undefined && s.magnitude > 0) ? s.magnitude : 0
+    (s.numberValue !== undefined && s.numberValue > 0) ? s.numberValue : 0
   );
 
   return (
@@ -30,7 +30,7 @@ export const JumpStatement = (props: JumpStatementProps) =>
       <div className="kd-statement-line-title">{StatementTitle.get(s.name)}</div>
       {displayLevel <= DISPLAY_LEVEL.JUMP_NO_ATTR ?
         <div className="kd-statement-line-parameters">
-          {s.magnitude ? `${s.magnitude} ${MagnitudeTitle.get(s.name) ? MagnitudeTitle.get(s.name) : ""}` : ""}
+          {s.numberValue ? `${s.numberValue} ${NumberValueTitle.get(s.name) ? NumberValueTitle.get(s.name) : ""}` : ""}
         </div>
       : <div className="kd-statement-line-parameters">
           <div style={{display: "flex"}}>
@@ -39,10 +39,10 @@ export const JumpStatement = (props: JumpStatementProps) =>
               onChange={(e:ChangeEvent<HTMLInputElement>)=>{
                 const newValue = Number(e.target.value);
                 setNumberInput(newValue); 
-                s.magnitude = newValue;
+                s.numberValue = newValue;
                 setCodeStatement(s);}}>
             </input>
-            {MagnitudeTitle.get(s.name) ? MagnitudeTitle.get(s.name) : ""}
+            {NumberValueTitle.get(s.name) ? NumberValueTitle.get(s.name) : ""}
           </div>
         </div>
       }

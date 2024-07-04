@@ -4,7 +4,7 @@ import { DisplayArea } from "./DisplayArea";
 import KDContext, { KDContextType } from "./../model/KDContext";
 
 import "./../assets/styles/kidDev.css";
-import { DISPLAY_LEVEL } from "../utils/displayLevelUtil";
+import { DISPLAY_LEVEL } from "../constants/displayLevelConstants";
 
 export interface WorkBenchProps {
 }

@@ -20,7 +20,7 @@ export interface KDCodeStatement {
   name: StatementCode;
   coords?: Array<number>;
   stringValue?: string;
-  magnitude?: number;
+  numberValue?: number;
 }
 
 export interface KDUserDescriptor {

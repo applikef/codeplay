@@ -2,10 +2,11 @@ import { useContext, useState } from "react";
 import KDContext, { KDContextType } from "./../model/KDContext";
 import { Workbench } from "./../components/Workbenck";
 import { KidDevBanner } from "../components/KDBanner/KDBanner";
-import { DISPLAY_LEVEL } from "./../utils/displayLevelUtil";
+import { DISPLAY_LEVEL } from "../constants/displayLevelConstants";
 
 import "./../assets/styles/kidDev.css";
 import { StatementCode } from "../constants/modelConstants";
+import { initCode } from "../utils/codeUtil";
 
 export interface KidDevProps {
 
@@ -22,25 +23,6 @@ export const KidDev = (props: KidDevProps) =>
   const [settingsDisplay, setSettingsDisplay] = useState<string>("kd-settings-display-hide");
   let newDisplayLevel = displayLevel;
 
-  function initCode() {
-    if (newDisplayLevel === DISPLAY_LEVEL.JUMP_NO_ATTR) {
-      setCode({code: [{statements: [{
-        id: '1',
-        name: StatementCode.JUMP
-      }]}]});
-    }  
-    else if (newDisplayLevel === DISPLAY_LEVEL.JUMP) {
-      setCode({code: [{statements: [{
-        id: '1',
-        name: StatementCode.JUMP,
-        magnitude: 20
-      }]}]});
-    }
-    else if (newDisplayLevel >= DISPLAY_LEVEL.OTHER) {
-      alert('מסך זה עדיין לא קיים');
-    }
-  }
-
   return(
     <div className="app-page">
       <KidDevBanner settings={() => setSettingsDisplay("kd-settings-display-show")}></KidDevBanner>
@@ -56,7 +38,7 @@ export const KidDev = (props: KidDevProps) =>
           style={{ width: "50px" }}
           onChange={ (e) => {
             newDisplayLevel = Number(e.target.value);
-            initCode();
+            setCode(initCode(newDisplayLevel));
             setDisplayLevel(newDisplayLevel);
           }} />
         <div style={{marginTop: "8px"}}>

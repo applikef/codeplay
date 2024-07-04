@@ -1,6 +1,4 @@
-import { useContext } from "react";
 import { KDCodeStatement } from "../../../model/kidDevModel";
-import KDContext, { KDContextType } from "../../../model/KDContext";
 import "./StatementLine.css";
 import { JumpStatement } from "./JumpStatement";
 import { SetStrokeStatement } from "./SetStrokeStatement";

@@ -8,11 +8,11 @@ export const StatementTitle = new Map<StatementCode, string>([
   [StatementCode.SET_STROKE,'צבע עפרון']
 ]);
 
-export const MagnitudeTitle = new Map<StatementCode, string>([
+export const NumberValueTitle = new Map<StatementCode, string>([
   [StatementCode.JUMP,'צעדים']
 ]);
 
-export const DefaultMagnitude = new Map<StatementCode, number>([
+export const DefaultNumberValue = new Map<StatementCode, number>([
   [StatementCode.JUMP,50]
 ]);
 

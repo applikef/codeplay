@@ -5,9 +5,9 @@ import { StatementCode } from "../../constants/modelConstants";
 import { getTimestamp } from "../../utils/generalUtils";
 import "./CodeArea.css";
 import KDContext, { KDContextType } from "../../model/KDContext";
-import { DISPLAY_LEVEL } from "../../utils/displayLevelUtil";
+import { DISPLAY_LEVEL } from "../../constants/displayLevelConstants";
 import { KD_APP_STRINGS } from "../../constants/appStrings";
-import { DefaultMagnitude } from "../../constants/modelConstants";
+import { DefaultNumberValue } from "../../constants/modelConstants";
 
 export interface StatementsControlBarProps {
   updateCode: Function;
@@ -61,7 +61,7 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
     const jumpStatement: KDCodeStatement = {
       id: getTimestamp(),
       name: StatementCode.JUMP,
-      magnitude: DefaultMagnitude.get(StatementCode.JUMP)      
+      numberValue: DefaultNumberValue.get(StatementCode.JUMP)      
     }; 
     props.updateCode(jumpStatement);
   }
@@ -92,6 +92,7 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
         <div className={submenusClass.get("movement")}>
           <div>
             <img src="./resources/jump32.png" alt={KD_APP_STRINGS.JUMP}
+              title = {KD_APP_STRINGS.JUMP}
               onClick={() => addJumpStatement()}
             />
           </div>

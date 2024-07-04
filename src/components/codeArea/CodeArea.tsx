@@ -2,11 +2,11 @@ import { useContext, useState } from "react";
 import KDContext, { KDContextType } from "./../../model/KDContext";
 import { StatementLine } from "./StatementLine/StatementLine";
 import { CodeAreaControlBar } from "./CodeAreaControlBar";
-import { DISPLAY_LEVEL } from "./../../utils/displayLevelUtil";
+import { DISPLAY_LEVEL } from "../../constants/displayLevelConstants";
 import "./../../assets/styles/kidDev.css";
 import { StatementsControlBar } from "./StatementsControlBar";
 import { KDCodeStatement } from "../../model/kidDevModel";
-import { addStatement } from "../../utils/statementsUtil";
+import { addStatement, deleteStatement, getNumberOfStatements } from "../../utils/codeUtil";
 
 export interface CodeAreaProps {
 
@@ -24,7 +24,12 @@ export const CodeArea = (props: CodeAreaProps) =>
 
   function updateCode(newStatement: KDCodeStatement) {
     setCode(addStatement(code, newStatement));
-    setCodeLength(code.code[0].statements.length);
+    setCodeLength(getNumberOfStatements(code));
+  }
+
+  function deleteSelectedStatement(statement: KDCodeStatement) {
+    setCode(deleteStatement(code, statement));
+    setCodeLength(getNumberOfStatements(code));
   }
 
   return(
@@ -37,8 +42,16 @@ export const CodeArea = (props: CodeAreaProps) =>
         <div className="kd-code-area">
         { codeLength > 0 &&
           code.code.map((block)=>block.statements.map((s,i)=>
-            <StatementLine statement={s} key={i} />))
-        }
+            <div className="kd-statement-line-global">
+              { displayLevel >= DISPLAY_LEVEL.DELETE_STATEMENT &&
+                <div className="kd-statement-line-icons">
+                  <img src="./resources/delete32.png" alt="מחק" height={24}
+                    onClick={() => deleteSelectedStatement(s)}/>
+                </div>
+              }
+              <StatementLine statement={s} key={i} />
+            </div>
+          ))}
         </div>
       </div>
     </div>

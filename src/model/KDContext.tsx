@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { KDCode, KDCodeStatement } from './kidDevModel';
-import { updateCodeStatement } from '../utils/statementsUtil';
+import { updateCodeStatement } from '../utils/codeUtil';
 
 export type KDContextType = {
   displayLevel: number;
