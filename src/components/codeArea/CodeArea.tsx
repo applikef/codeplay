@@ -36,14 +36,14 @@ export const CodeArea = (props: CodeAreaProps) =>
     <div className="kd-code">
       <CodeAreaControlBar></CodeAreaControlBar>
       <div className="kd-code-area-work-area">
-        {displayLevel >= DISPLAY_LEVEL.COLORS_STMTS &&
+        {displayLevel >= DISPLAY_LEVEL.DELETE_AND_JUMP_STATEMENT &&
           <StatementsControlBar updateCode={updateCode}></StatementsControlBar>
         }
         <div className="kd-code-area">
         { codeLength > 0 &&
           code.code.map((block)=>block.statements.map((s,i)=>
             <div className="kd-statement-line-global">
-              { displayLevel >= DISPLAY_LEVEL.DELETE_STATEMENT &&
+              { displayLevel >= DISPLAY_LEVEL.DELETE_AND_JUMP_STATEMENT &&
                 <div className="kd-statement-line-icons">
                   <img src="./resources/delete32.png" alt="מחק" height={24}
                     onClick={() => deleteSelectedStatement(s)}/>

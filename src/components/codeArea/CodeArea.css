@@ -29,6 +29,8 @@
 
 .kd-statement-control-main-menu {
   width: 64px;
+  border-left: solid 1px lightgray;
+  margin-left: 16px;
 }
 
 .kd-statement-control-submenu {

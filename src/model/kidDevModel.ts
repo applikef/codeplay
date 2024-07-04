@@ -22,9 +22,3 @@ export interface KDCodeStatement {
   stringValue?: string;
   numberValue?: number;
 }
-
-export interface KDUserDescriptor {
-  id: string;
-  image: string;
-  displayLevel: number;
-}

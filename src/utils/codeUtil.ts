@@ -9,14 +9,14 @@ export function initCode(displayLevel: number): KDCode {
         name: StatementCode.JUMP
       }]}]});
     }  
-    else if (displayLevel === DISPLAY_LEVEL.JUMP) {
+    else if (displayLevel === DISPLAY_LEVEL.JUMP || displayLevel === DISPLAY_LEVEL.DELETE_AND_JUMP_STATEMENT) {
       return ({code: [{statements: [{
         id: '1',
         name: StatementCode.JUMP,
         numberValue: DefaultNumberValue.get(StatementCode.JUMP)
       }]}]});
     }
-    else if (displayLevel === DISPLAY_LEVEL.COLORS_STMTS) {
+    else if (displayLevel >= DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS) {
       return ({code: [{statements: [
         {
           id: '1',

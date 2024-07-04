@@ -49,7 +49,11 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
 
   const [submenusClass, setSubmenusClass] = useState<any>(hideAllEntries())
 
-  const showColorsBar = useRef<boolean>(displayLevel < DISPLAY_LEVEL.STATEMENT_GROUPS? true : false);
+  const showColorsBar = useRef<boolean>(displayLevel === DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS ? 
+    true : false);
+  const showJump = useRef<boolean>(
+    (displayLevel === DISPLAY_LEVEL.DELETE_AND_JUMP_STATEMENT || displayLevel === DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS) ? 
+    true : false);
 
   function showSubMenu(menuId: string) {
     let newState = hideAllEntries();
@@ -89,7 +93,7 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
         </div>
       }
       <div className="kd-statement-control-submenu">
-        <div className={submenusClass.get("movement")}>
+        <div className={showJump.current ? "" : submenusClass.get("movement")}>
           <div>
             <img src="./resources/jump32.png" alt={KD_APP_STRINGS.JUMP}
               title = {KD_APP_STRINGS.JUMP}

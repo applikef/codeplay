@@ -45,6 +45,7 @@
 .kd-code {
   display: flex; 
   flex-direction: column; 
+  min-width: 350px;
 }
 
 .kd-display {
