@@ -42,7 +42,7 @@ export const CodeArea = (props: CodeAreaProps) =>
         <div className="kd-code-area">
         { codeLength > 0 &&
           code.code.map((block)=>block.statements.map((s,i)=>
-            <div className="kd-statement-line-global">
+            <div className="kd-statement-line-global" key={i}>
               { displayLevel >= DISPLAY_LEVEL.DELETE_AND_JUMP_STATEMENT &&
                 <div className="kd-statement-line-icons">
                   <img src="./resources/delete32.png" alt="מחק" height={24}

@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { StrokeColors, StrokeColorsHex } from "../../constants/displayConstants";
 import { KDCodeStatement } from "../../model/kidDevModel";
 import { StatementCode } from "../../constants/modelConstants";
@@ -36,8 +36,17 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
   ]);
 
   function hideAllEntries() {
-      let e = new Map<string, string>();
+      let e = new Map<string, string>();      
       for (let i=0; i<menuEntryIds.length; i++) {
+        e.set(menuEntryIds[i], MenuEntries.get(menuEntryIds[i]).hideClass);
+      }
+      return(e);
+  }
+
+  function showFirstEntry() {
+      let e = new Map<string, string>();  
+      e.set(menuEntryIds[0], MenuEntries.get(menuEntryIds[0]).showClass);
+      for (let i=1; i<menuEntryIds.length; i++) {
         e.set(menuEntryIds[i], MenuEntries.get(menuEntryIds[i]).hideClass);
       }
       return(e);
@@ -47,7 +56,7 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
     displayLevel,
   } = useContext(KDContext) as KDContextType;
 
-  const [submenusClass, setSubmenusClass] = useState<any>(hideAllEntries())
+  const [submenusClass, setSubmenusClass] = useState<any>(showFirstEntry())
 
   const showColorsBar = useRef<boolean>(displayLevel === DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS ? 
     true : false);
@@ -95,7 +104,7 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
       <div className="kd-statement-control-submenu">
         <div className={showJump.current ? "" : submenusClass.get("movement")}>
           <div>
-            <img src="./resources/jump32.png" alt={KD_APP_STRINGS.JUMP}
+            <img src="./resources/menuEntries/jump32.png" alt={KD_APP_STRINGS.JUMP}
               title = {KD_APP_STRINGS.JUMP}
               onClick={() => addJumpStatement()}
             />

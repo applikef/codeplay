@@ -48,17 +48,6 @@
   min-width: 350px;
 }
 
-.kd-display {
-  line-height: 50px; 
-  overflow:hidden;
-}
-
-.kd-display-attribute {
-  font-size: 0.75rem;
-  align-self: flex-end;
-  padding-left: 8px;
-}
-
 .kd-settings-area {
   position: absolute;
   top: 54px;

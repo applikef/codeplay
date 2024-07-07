@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { CodeArea } from "./codeArea/CodeArea";
-import { DisplayArea } from "./DisplayArea";
+import { DisplayArea } from "./displayArea/DisplayArea";
 import KDContext, { KDContextType } from "./../model/KDContext";
 
 import "./../assets/styles/kidDev.css";

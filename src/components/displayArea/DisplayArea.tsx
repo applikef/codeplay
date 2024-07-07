@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
-import KDContext, { KDContextType } from "./../model/KDContext";
-import "./../assets/styles/kidDev.css";
-import { DISPLAY_LEVEL } from "../constants/displayLevelConstants";
-import { KD_APP_STRINGS } from "../constants/appStrings";
-import { KDPencil } from "../model/kidDevModel";
-import { DEFAULT_PENCIL_PEN_DELTA_X, DEFAULT_PENCIL_PEN_DELTA_Y, DEFAULT_PENCIL_POSITION } from "../constants/displayConstants";
+import KDContext, { KDContextType } from "../../model/KDContext";
+import { DISPLAY_LEVEL } from "../../constants/displayLevelConstants";
+import { KD_APP_STRINGS } from "../../constants/appStrings";
+import { KDPencil } from "../../model/kidDevModel";
+import { DEFAULT_PENCIL_PEN_DELTA_X, DEFAULT_PENCIL_PEN_DELTA_Y, DEFAULT_PENCIL_POSITION } from "../../constants/displayConstants";
+import "./DisplayArea.css";
 
 export interface DisplayAreaProps {
 }
@@ -47,7 +47,7 @@ export const DisplayArea = (props: DisplayAreaProps) => {
   }
 
   return(
-    <div className="kd-display">
+    <div className="kd-display-area">
       <div>
         <div>
           { displayLevel === DISPLAY_LEVEL.PENCIL_ONLY &&
@@ -59,13 +59,15 @@ export const DisplayArea = (props: DisplayAreaProps) => {
             </div>
           }
         </div>
-        <svg width={DISPLAY_WIDTH} height={DISPLAY_HEIGHT}>
-          <image id="pencil" href={CODE_LEAD} x={pencil.x} y={pencil.y}
-            onClick={() => displayLevel === DISPLAY_LEVEL.PENCIL_ONLY && 
-              defineNextPosition()}></image>
-        </svg>
+        <div className="kd-display-area-drawing-area">
+          <svg width={DISPLAY_WIDTH} height={DISPLAY_HEIGHT}>
+            <image id="pencil" href={CODE_LEAD} x={pencil.x} y={pencil.y}
+              onClick={() => displayLevel === DISPLAY_LEVEL.PENCIL_ONLY && 
+                defineNextPosition()}></image>
+          </svg>
+        </div>
       </div>
-      <div className="kd-display-attribute">
+      <div className="kd-display-area-attribute">
         <a href="https://www.freepik.com/free-vector/cute-koala-hanging-pencil-with-bag-cartoon-vector-icon-illustration-animal-education-isolated_39515607.htm#fromView=search&page=1&position=14&uuid=8be2567d-0f34-4a9b-87e1-4a4792bedcd6">Image by catalyststuff on Freepik</a>
       </div>
     </div>

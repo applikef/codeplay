@@ -27,4 +27,7 @@
   --notification-info: var(--blue-00);
   --notification-warning: var(--yellow-01);
   --notification-error: var(--red-01);
+
+  --clickable: var(--blue-01);
+
 }
