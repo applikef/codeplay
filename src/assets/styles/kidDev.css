@@ -34,14 +34,6 @@
   flex-direction: row;
 }
 
-.kd-control-bar {
-  margin-bottom: 16px;
-}
-
-.kd-control-bar-icon {
-  margin-left: 24px;
-}
-
 .kd-code {
   display: flex; 
   flex-direction: column; 

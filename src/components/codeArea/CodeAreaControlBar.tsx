@@ -14,15 +14,17 @@ export const CodeAreaControlBar = (props: CodeAreaControlBarProps) =>
   const interpreter = new CodeInterpreter(context)
 
   return(
-    <div className="kd-control-bar">
-      <img src="resources/play32.png" className="kd-control-bar-icon app-clickable"
+    <div className="kd-code-area-control-bar">
+      <img src="resources/play32.png" className="kd-code-area-control-bar-icon app-clickable"
         title="בצע"  alt="בצע"
         onClick={() => interpreter.execute()}/>
       { context.displayLevel >= DISPLAY_LEVEL.RESET &&
-        <img src="resources/reset32.png" className="kd-control-bar-icon app-clickable"
+        <img src="resources/reset32.png" className="kd-code-area-control-bar-icon app-clickable"
           title="מחק הכל"  alt="מחק הכל"
           onClick={() => interpreter.reset()}/>
       }
+      <div id="messageArea" className="kd-code-area-message-area">
+      </div>
     </div>
   )
 }

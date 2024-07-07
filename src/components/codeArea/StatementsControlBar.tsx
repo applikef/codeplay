@@ -1,13 +1,13 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { StrokeColors, StrokeColorsHex } from "../../constants/displayConstants";
 import { KDCodeStatement } from "../../model/kidDevModel";
 import { StatementCode } from "../../constants/modelConstants";
 import { getTimestamp } from "../../utils/generalUtils";
-import "./CodeArea.css";
 import KDContext, { KDContextType } from "../../model/KDContext";
 import { DISPLAY_LEVEL } from "../../constants/displayLevelConstants";
 import { KD_APP_STRINGS } from "../../constants/appStrings";
 import { DefaultNumberValue } from "../../constants/modelConstants";
+import "./codeArea.css";
 
 export interface StatementsControlBarProps {
   updateCode: Function;

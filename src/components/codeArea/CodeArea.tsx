@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
 import KDContext, { KDContextType } from "./../../model/KDContext";
-import { StatementLine } from "./StatementLine/StatementLine";
+import { StatementLine } from "./statements/StatementLine";
 import { CodeAreaControlBar } from "./CodeAreaControlBar";
 import { DISPLAY_LEVEL } from "../../constants/displayLevelConstants";
-import "./../../assets/styles/kidDev.css";
 import { StatementsControlBar } from "./StatementsControlBar";
 import { KDCodeStatement } from "../../model/kidDevModel";
 import { addStatement, deleteStatement, getNumberOfStatements } from "../../utils/codeUtil";
+import "./codeArea.css";
 
 export interface CodeAreaProps {
 

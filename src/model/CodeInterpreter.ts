@@ -3,6 +3,9 @@ import { KDContextType } from "./KDContext";
 import { KDCode, KDCodeBlock, KDCodeStatement, KDPencil } from "./kidDevModel";
 import { DefaultNumberValue, DefaultStringValue } from "./../constants/modelConstants";
 import { DEFAULT_PENCIL_PEN_DELTA_X, DEFAULT_PENCIL_PEN_DELTA_Y, DEFAULT_PENCIL_POSITION } from "../constants/displayConstants";
+import { showError } from "../utils/errorsUtil";
+import { KD_APP_ERROR_MESSAGES } from "../constants/appErrorMessages";
+import { CodeValidator } from "./CodeValidator";
 
 export class CodeInterpreter { 
   private displayLevel: number;
@@ -47,9 +50,24 @@ export class CodeInterpreter {
       return;
     }
 
-    this.code.code.map((block: KDCodeBlock)=>block.statements.map((s,i)=>
-      this.executeStatement(s,i)
-    ))
+    let stopExecution: boolean = false;
+    for (let i=0; (!stopExecution && i < this.code.code.length); i++) {
+      const blockStatements: Array<KDCodeStatement> = this.code.code[i].statements;
+      for (let j=0; j < blockStatements.length; j++) {
+        const statement: KDCodeStatement = blockStatements[j];
+        if (CodeValidator.isValid(statement)) {
+          this.executeStatement(statement,i);
+        }
+        else {
+          showError(KD_APP_ERROR_MESSAGES.FIX_ERRORS);
+          stopExecution = true;
+          break;
+        }  
+      }
+      if (stopExecution) {
+        break;
+      }
+    }
   }
  
   private executeStatement(s: KDCodeStatement, i: number) {

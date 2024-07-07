@@ -1,5 +1,5 @@
 import { KDCodeStatement } from "../../../model/kidDevModel";
-import "./StatementLine.css";
+import "./statementLine.css";
 import { JumpStatement } from "./JumpStatement";
 import { SetStrokeStatement } from "./SetStrokeStatement";
 import { StatementCode } from "../../../constants/modelConstants";

@@ -1,5 +1,8 @@
 import { KDPencil } from "../model/kidDevModel";
 
+export const DISPLAY_AREA_WIDTH = 800; 
+export const DISPLAY_AREA_HEIGHT = 600; 
+
 export const DEFAULT_PENCIL_POSITION: KDPencil = {
   x: 100,
   y: 100,

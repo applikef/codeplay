@@ -3,15 +3,13 @@ import KDContext, { KDContextType } from "../../model/KDContext";
 import { DISPLAY_LEVEL } from "../../constants/displayLevelConstants";
 import { KD_APP_STRINGS } from "../../constants/appStrings";
 import { KDPencil } from "../../model/kidDevModel";
-import { DEFAULT_PENCIL_PEN_DELTA_X, DEFAULT_PENCIL_PEN_DELTA_Y, DEFAULT_PENCIL_POSITION } from "../../constants/displayConstants";
-import "./DisplayArea.css";
+import { DEFAULT_PENCIL_PEN_DELTA_X, DEFAULT_PENCIL_PEN_DELTA_Y, DEFAULT_PENCIL_POSITION, DISPLAY_AREA_HEIGHT, DISPLAY_AREA_WIDTH } from "../../constants/displayConstants";
+import "./displayArea.css";
 
 export interface DisplayAreaProps {
 }
 
 export const DisplayArea = (props: DisplayAreaProps) => {
-  const DISPLAY_WIDTH = 800; 
-  const DISPLAY_HEIGHT = 600; 
   const CODE_LEAD = "./resources/pencil128.png";
   const PENCIL_SIZE = 64;
 
@@ -34,10 +32,10 @@ export const DisplayArea = (props: DisplayAreaProps) => {
   const getRandomPosition = (): [number,number] => {
     const d: number = PENCIL_SIZE * 2;
 
-    let x: number = Math.floor(Math.random() * DISPLAY_WIDTH);
-    x = Math.min(DISPLAY_WIDTH - d, Math.max(d, x));
-    let y: number = Math.floor(Math.random() * DISPLAY_HEIGHT);
-    y = Math.min(DISPLAY_HEIGHT - d, Math.max(d, y));
+    let x: number = Math.floor(Math.random() * DISPLAY_AREA_WIDTH);
+    x = Math.min(DISPLAY_AREA_WIDTH - d, Math.max(d, x));
+    let y: number = Math.floor(Math.random() * DISPLAY_AREA_HEIGHT);
+    y = Math.min(DISPLAY_AREA_HEIGHT - d, Math.max(d, y));
 
     let nextPosition: [number,number] = [x,y];
     if (nextPosition[0] === pencil.x && nextPosition[0] === pencil.y) {
@@ -60,7 +58,7 @@ export const DisplayArea = (props: DisplayAreaProps) => {
           }
         </div>
         <div className="kd-display-area-drawing-area">
-          <svg width={DISPLAY_WIDTH} height={DISPLAY_HEIGHT}>
+          <svg width={DISPLAY_AREA_WIDTH} height={DISPLAY_AREA_HEIGHT}>
             <image id="pencil" href={CODE_LEAD} x={pencil.x} y={pencil.y}
               onClick={() => displayLevel === DISPLAY_LEVEL.PENCIL_ONLY && 
                 defineNextPosition()}></image>
