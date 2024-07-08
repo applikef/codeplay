@@ -1,6 +1,6 @@
 import { StatementCode } from "../constants/modelConstants";
 import { KDContextType } from "./KDContext";
-import { KDCode, KDCodeBlock, KDCodeStatement, KDPencil } from "./kidDevModel";
+import { KDCode, KDCodeStatement, KDPencil } from "./kidDevModel";
 import { DefaultNumberValue, DefaultStringValue } from "./../constants/modelConstants";
 import { DEFAULT_PENCIL_PEN_DELTA_X, DEFAULT_PENCIL_PEN_DELTA_Y, DEFAULT_PENCIL_POSITION } from "../constants/displayConstants";
 import { showError } from "../utils/errorsUtil";
@@ -19,6 +19,7 @@ export class CodeInterpreter {
   private SVG_NS = 'http://www.w3.org/2000/svg';
   private pencil:KDPencil = DEFAULT_PENCIL_POSITION;
   private stroke: string = "#0000ff";
+  private angle: number = 0;
 
   private setPencil(penX: number, penY: number) {
     this.pencil = {
@@ -86,6 +87,10 @@ export class CodeInterpreter {
           : DefaultStringValue.get(s.name)!);
           break;
       }
+      case StatementCode.TURN_DOWN: {
+          this.execTurn(s.numberValue);
+          break;
+      }
     }
   }
 
@@ -109,4 +114,13 @@ export class CodeInterpreter {
   public execSetStroke(stroke: string) {
     this.stroke = stroke;
   } 
+
+  public execTurn(degrees: number | undefined) {
+    if (degrees) {
+      this.angle = degrees;
+      const pencil = document.getElementById("pencil")!;
+      pencil.setAttribute('transform', `rotate(${degrees})`);
+      this.setPencil(this.pencil.penX, this.pencil.penY);
+    }
+  }
 }

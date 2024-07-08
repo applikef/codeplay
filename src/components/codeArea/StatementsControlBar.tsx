@@ -86,6 +86,33 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
       stringValue: strokeHex
     }; 
     props.updateCode(setStrokeStatement);
+  } 
+
+  function addTurnStatement(degrees: number) {
+    let turnStatemnetName: StatementCode = StatementCode.TURN;
+    switch (degrees) {
+      case 0:
+        turnStatemnetName = StatementCode.TURN_RIGHT;
+        break;
+      case 90:
+        turnStatemnetName = StatementCode.TURN_UP;
+        break;
+      case 180:
+        turnStatemnetName = StatementCode.TURN_LEFT;
+        break;
+      case 270:
+        turnStatemnetName = StatementCode.TURN_DOWN;
+        break;
+      default: 
+        turnStatemnetName = StatementCode.TURN; 
+    }
+
+    const turnStatement: KDCodeStatement = {
+      id: getTimestamp(),
+      name: turnStatemnetName,
+      numberValue: degrees
+    }; 
+    props.updateCode(turnStatement);
   }
 
   return (
@@ -108,6 +135,26 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
               title = {KD_APP_STRINGS.JUMP}
               onClick={() => addJumpStatement()}
             />
+            { displayLevel >= DISPLAY_LEVEL.TURN_NO_ATTR &&
+              <span>
+                <img src="./resources/menuEntries/turnUp32.png" alt={KD_APP_STRINGS.JUMP}
+                  title = {KD_APP_STRINGS.TURN_UP}
+                  onClick={() => addTurnStatement(90)}
+                />
+                <img src="./resources/menuEntries/turnDown32.png" alt={KD_APP_STRINGS.JUMP}
+                  title = {KD_APP_STRINGS.TURN_DOWN}
+                  onClick={() => addTurnStatement(270)}
+                />
+                <img src="./resources/menuEntries/turnRight32.png" alt={KD_APP_STRINGS.JUMP}
+                  title = {KD_APP_STRINGS.TURN_RIGHT}
+                  onClick={() => addTurnStatement(0)}
+                />
+                <img src="./resources/menuEntries/turnLeft32.png" alt={KD_APP_STRINGS.JUMP}
+                  title = {KD_APP_STRINGS.TURN_LEFT}
+                  onClick={() => addTurnStatement(180)}
+                />
+              </span>
+            }
           </div>
         </div>
         <div className={showColorsBar.current ? "" : submenusClass.get("look")}>

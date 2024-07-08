@@ -1,18 +1,19 @@
 import { ChangeEvent, useContext, useState } from "react";
 import { KDCodeStatement } from "../../../model/kidDevModel";
-import { DefaultNumberValue, NumberValueTitle, StatementCode, StatementTitle } from "../../../constants/modelConstants";
+import { NumberValueTitle, StatementTitle } from "../../../constants/modelConstants";
 import KDContext, { KDContextType } from "../../../model/KDContext";
 import { DISPLAY_LEVEL } from "../../../constants/displayLevelConstants";
 import './statementLine.css';
 import { KD_APP_ERROR_MESSAGES } from "../../../constants/appErrorMessages";
 import { clearErrors, showError } from "../../../utils/errorsUtil";
 import { CodeValidator } from "../../../model/CodeValidator";
+import { getTurnStatementIcon, getTurnStatementTitle } from "../../../utils/displayUtils";
 
-export interface JumpStatementProps {
+export interface TurnStatementProps {
   statement: KDCodeStatement;
 }
 
-export const JumpStatement = (props: JumpStatementProps) => 
+export const TurnStatement = (props: TurnStatementProps) => 
 {
   const s: KDCodeStatement = props.statement;
   const {
@@ -25,17 +26,15 @@ export const JumpStatement = (props: JumpStatementProps) =>
   );
   const [statementBorder, setStatementBorder] = useState<string>("kd-statement-line-correct");
 
-  return (
+    return (
     <div className={`kd-statement-line ${statementBorder}`}>
       <div className="kd-statement-line-icon">
-        <img src="resources/statementIcons/jump32.png" className="banner-icon" 
-          title="התקדם"  alt="התקדם"/>
+        <img src={getTurnStatementIcon(s.name)} className="banner-icon" 
+          title={getTurnStatementTitle(s.name)}  alt={getTurnStatementTitle(s.name)}/>
       </div>
       <div className="kd-statement-line-title">{StatementTitle.get(s.name)}</div>
-      {displayLevel <= DISPLAY_LEVEL.JUMP_NO_ATTR ?
-        <div className="kd-statement-line-parameters">
-          {s.numberValue ? `${s.numberValue} ${NumberValueTitle.get(s.name) ? NumberValueTitle.get(s.name) : ""}` : ""}
-        </div>
+      {displayLevel <= DISPLAY_LEVEL.TURN_NO_ATTR ?
+        <div></div>
       : <div className="kd-statement-line-parameters">
           <div style={{display: "flex"}}>
             <input value={numberInput}

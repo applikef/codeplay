@@ -8,6 +8,9 @@ export class CodeValidator {
         return CodeValidator.isValidJump(s.numberValue);
       case StatementCode.SET_STROKE:
         return CodeValidator.isValidSetStroke(s.stringValue); 
+      case StatementCode.TURN_DOWN:
+        return CodeValidator.isValidTurn(s.numberValue, 270);
+      default: return true;
     }
   }
 
@@ -35,5 +38,28 @@ export class CodeValidator {
         return false;
     }
     return true;
+  }
+
+  public static isValidTurn(value:number | undefined, expectedNumber?: number) {
+    if (value === undefined) {
+      return false;
+    }
+    
+    if (expectedNumber) {
+      if (value === expectedNumber) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+    else {
+      if (value >= 0 && value < 360) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
   }
 }
