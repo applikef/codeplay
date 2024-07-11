@@ -16,7 +16,8 @@ export function initCode(displayLevel: number): KDCode {
         numberValue: DefaultNumberValue.get(StatementCode.JUMP)
       }]}]});
     }
-    else if (displayLevel >= DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS) {
+    else if (displayLevel >= DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS &&
+      displayLevel < DISPLAY_LEVEL.TURN_NO_ATTR) {
       return ({code: [{statements: [
         {
           id: '1',
@@ -28,6 +29,35 @@ export function initCode(displayLevel: number): KDCode {
         name: StatementCode.JUMP,
         numberValue: DefaultNumberValue.get(StatementCode.JUMP)
       }]}]});
+    }
+    else if (displayLevel >= DISPLAY_LEVEL.TURN_NO_ATTR) {
+      return ({code: [{statements: [
+        {
+          id: '1',
+          name: StatementCode.SET_STROKE,
+          stringValue: DefaultStringValue.get(StatementCode.SET_STROKE)
+        },      
+        {
+          id: '2',
+          name: StatementCode.JUMP,
+          numberValue: DefaultNumberValue.get(StatementCode.JUMP)
+        },
+        {
+          id: '3',
+          name: StatementCode.TURN_UP,
+          numberValue: 90
+        },
+        {
+          id: '4',
+          name: StatementCode.SET_STROKE,
+          stringValue: "#ff0000"
+        },
+        {
+          id: '5',
+          name: StatementCode.JUMP,
+          numberValue: DefaultNumberValue.get(StatementCode.JUMP)
+        }
+    ]}]});
     }
     else {
       return ({code: [{statements: [{

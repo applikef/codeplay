@@ -3,7 +3,7 @@ import KDContext, { KDContextType } from "../../model/KDContext";
 import { DISPLAY_LEVEL } from "../../constants/displayLevelConstants";
 import { KD_APP_STRINGS } from "../../constants/appStrings";
 import { KDPencil } from "../../model/kidDevModel";
-import { DEFAULT_PENCIL_PEN_DELTA_X, DEFAULT_PENCIL_PEN_DELTA_Y, DEFAULT_PENCIL_POSITION, DISPLAY_AREA_HEIGHT, DISPLAY_AREA_WIDTH } from "../../constants/displayConstants";
+import { DEFAULT_PENCIL_PEN_DELTA_X, DEFAULT_PENCIL_PEN_DELTA_Y, DEFAULT_PENCIL, DISPLAY_AREA_HEIGHT, DISPLAY_AREA_WIDTH } from "../../constants/displayConstants";
 import "./displayArea.css";
 
 export interface DisplayAreaProps {
@@ -17,7 +17,7 @@ export const DisplayArea = (props: DisplayAreaProps) => {
     displayLevel,
   } = useContext(KDContext) as KDContextType;
 
-  const [pencil, setPencil] = useState<KDPencil>(DEFAULT_PENCIL_POSITION);
+  const [pencil, setPencil] = useState<KDPencil>(DEFAULT_PENCIL);
 
   const defineNextPosition = () => {
     const newPosition = getRandomPosition();
@@ -25,7 +25,10 @@ export const DisplayArea = (props: DisplayAreaProps) => {
       x: newPosition[0] - DEFAULT_PENCIL_PEN_DELTA_X,
       y: newPosition[1] - DEFAULT_PENCIL_PEN_DELTA_Y,
       penX: newPosition[0],
-      penY: newPosition[1]
+      penY: newPosition[1],
+      stroke: DEFAULT_PENCIL.stroke,
+      angle: 0,
+      rotate: 0
     })
   }
 
@@ -58,7 +61,8 @@ export const DisplayArea = (props: DisplayAreaProps) => {
           }
         </div>
         <div className="kd-display-area-drawing-area">
-          <svg width={DISPLAY_AREA_WIDTH} height={DISPLAY_AREA_HEIGHT}>
+          <svg width={DISPLAY_AREA_WIDTH} height={DISPLAY_AREA_HEIGHT}
+            viewBox={`0 0 ${DISPLAY_AREA_WIDTH} ${DISPLAY_AREA_HEIGHT}`}>
             <image id="pencil" href={CODE_LEAD} x={pencil.x} y={pencil.y}
               onClick={() => displayLevel === DISPLAY_LEVEL.PENCIL_ONLY && 
                 defineNextPosition()}></image>

@@ -88,9 +88,9 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
     props.updateCode(setStrokeStatement);
   } 
 
-  function addTurnStatement(degrees: number) {
+  function addTurnStatement(angle: number) {
     let turnStatemnetName: StatementCode = StatementCode.TURN;
-    switch (degrees) {
+    switch (angle) {
       case 0:
         turnStatemnetName = StatementCode.TURN_RIGHT;
         break;
@@ -110,7 +110,7 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
     const turnStatement: KDCodeStatement = {
       id: getTimestamp(),
       name: turnStatemnetName,
-      numberValue: degrees
+      numberValue: angle
     }; 
     props.updateCode(turnStatement);
   }

@@ -5,6 +5,9 @@ export interface KDPencil {
   y: number;
   penX: number;
   penY: number;
+  stroke: string;
+  angle: number;
+  rotate: number;
 }
 
 export interface KDCode {
