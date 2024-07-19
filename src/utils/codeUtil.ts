@@ -6,14 +6,22 @@ export function initCode(displayLevel: number): KDCode {
     if (displayLevel === DISPLAY_LEVEL.JUMP_NO_ATTR) {
       return ({code: [{statements: [{
         id: '1',
-        name: StatementCode.JUMP
+        name: StatementCode.JUMP,
+        numberValue: DefaultNumberValue.get(StatementCode.JUMP)
       }]}]});
     }  
-    else if (displayLevel === DISPLAY_LEVEL.JUMP || displayLevel === DISPLAY_LEVEL.DELETE_AND_JUMP_STATEMENT) {
+    else if (displayLevel === DISPLAY_LEVEL.JUMP) {
       return ({code: [{statements: [{
         id: '1',
         name: StatementCode.JUMP,
         numberValue: DefaultNumberValue.get(StatementCode.JUMP)
+      }]}]});
+    }
+    else if (displayLevel === DISPLAY_LEVEL.DELETE_AND_JUMP_STATEMENT) {
+      return ({code: [{statements: [{
+        id: '1',
+        name: StatementCode.JUMP,
+        numberValue: 100
       }]}]});
     }
     else if (displayLevel >= DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS &&

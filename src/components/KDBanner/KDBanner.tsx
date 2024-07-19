@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import "./KDBanner.css";
 import { DISPLAY_LEVEL } from "../../constants/displayLevelConstants";
 import KDContext, { KDContextType } from "../../model/KDContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { Help } from "../Help";
 
 export interface KidDevBannerProps {
   settings?: Function;
@@ -12,6 +13,8 @@ export const KidDevBanner = (props: KidDevBannerProps) => {
   const {
     displayLevel,
   } = useContext(KDContext) as KDContextType;
+
+  const [showHelp, setShowHelp] = useState<string>("banner-hide-help");
 
   return (
     <>
@@ -27,8 +30,19 @@ export const KidDevBanner = (props: KidDevBannerProps) => {
                 onClick={() => props.settings ? props.settings() : undefined}/>
             }
           </div>
+          <div className="banner-left-icon-bar">
+            <div onClick={() => {               
+                setShowHelp(() => showHelp === "banner-show-help" ? "banner-hide-help" : "banner-show-help")}
+              }>
+                <img src="resources/icons/help.png" className="banner-icon" 
+                  title="עזרה: קליק לפתיחה ולסגירה"  alt="עזרה" />
+            </div>
+          </div>
         </div>
       <hr className="banner-hr"/>      
+      <div className={`banner-help-content ${showHelp}`}>
+        <Help helpPageId={displayLevel.toString()} />
+      </div>
     </>
   );
 }

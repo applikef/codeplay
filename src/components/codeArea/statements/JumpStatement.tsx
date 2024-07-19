@@ -20,9 +20,12 @@ export const JumpStatement = (props: JumpStatementProps) =>
     setCodeStatement
   } = useContext(KDContext) as KDContextType;
  
-  const [numberInput, setNumberInput] = useState<number>(
-    (s.numberValue !== undefined && s.numberValue > 0) ? s.numberValue : 0
-  );
+  const length = (s.numberValue !== undefined && s.numberValue > 0) ? s.numberValue! : 
+    (displayLevel <= DISPLAY_LEVEL.JUMP_NO_ATTR ? 
+      DefaultNumberValue.get(StatementCode.JUMP)! 
+      : 0);
+  const [numberInput, setNumberInput] = useState<number>(length);
+
   const [statementBorder, setStatementBorder] = useState<string>("kd-statement-line-correct");
 
   return (
@@ -32,11 +35,13 @@ export const JumpStatement = (props: JumpStatementProps) =>
           title="התקדם"  alt="התקדם"/>
       </div>
       <div className="kd-statement-line-title">{StatementTitle.get(s.name)}</div>
-      {displayLevel <= DISPLAY_LEVEL.JUMP_NO_ATTR ?
+      {/*displayLevel <= DISPLAY_LEVEL.JUMP_NO_ATTR ?
         <div className="kd-statement-line-parameters">
           {s.numberValue ? `${s.numberValue} ${NumberValueTitle.get(s.name) ? NumberValueTitle.get(s.name) : ""}` : ""}
         </div>
-      : <div className="kd-statement-line-parameters">
+      : */}
+      {displayLevel > DISPLAY_LEVEL.JUMP_NO_ATTR &&
+        <div className="kd-statement-line-parameters">
           <div style={{display: "flex"}}>
             <input value={numberInput}
               style={{width: "50px", marginLeft: "8px"}}
