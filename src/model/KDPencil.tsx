@@ -1,7 +1,7 @@
-export const PENCIL_IMAGE = "./resources/pencil128.png";
-export const PENCIL_IMAGE_MAX_DIMENSION = 128;
-export const DEFAULT_PENCIL_PEN_DELTA_X = 62;
-export const DEFAULT_PENCIL_PEN_DELTA_Y = 116;
+export const PENCIL_IMAGE = "./resources/pencil96.png";
+export const PENCIL_IMAGE_MAX_DIMENSION = 96;   // 128;
+export const DEFAULT_PENCIL_PEN_DELTA_X = 47;   // 62;
+export const DEFAULT_PENCIL_PEN_DELTA_Y = 87;   // 116;
 
 export interface KDPencil {
   x: number;
@@ -16,8 +16,8 @@ export interface KDPencil {
 export const DEFAULT_PENCIL: KDPencil = {
   x: 100,
   y: 100,
-  penX: 162,
-  penY: 216,
+  penX: 100 + DEFAULT_PENCIL_PEN_DELTA_X,
+  penY: 100 + DEFAULT_PENCIL_PEN_DELTA_Y,
   stroke: "#0000ff",
   angle: 0,
   rotate: 0
