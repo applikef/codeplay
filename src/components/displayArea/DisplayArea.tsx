@@ -2,17 +2,17 @@ import { useContext, useState } from "react";
 import KDContext, { KDContextType } from "../../model/KDContext";
 import { DISPLAY_LEVEL } from "../../constants/displayLevelConstants";
 import { KD_APP_STRINGS } from "../../constants/appStrings";
-import { KDPencil } from "../../model/kidDevModel";
-import { DEFAULT_PENCIL_PEN_DELTA_X, DEFAULT_PENCIL_PEN_DELTA_Y, DEFAULT_PENCIL, DISPLAY_AREA_HEIGHT, DISPLAY_AREA_WIDTH } from "../../constants/displayConstants";
+import { KDPencil, 
+  DEFAULT_PENCIL_PEN_DELTA_X, DEFAULT_PENCIL_PEN_DELTA_Y, 
+  DEFAULT_PENCIL, 
+  PENCIL_IMAGE, PENCIL_IMAGE_MAX_DIMENSION } from "../../model/KDPencil";
+import { DISPLAY_AREA_HEIGHT, DISPLAY_AREA_WIDTH } from "../../constants/displayConstants";
 import "./displayArea.css";
 
 export interface DisplayAreaProps {
 }
 
 export const DisplayArea = (props: DisplayAreaProps) => {
-  const CODE_LEAD = "./resources/pencil128.png";
-  const PENCIL_SIZE = 64;
-
   const {
     displayLevel,
   } = useContext(KDContext) as KDContextType;
@@ -33,7 +33,7 @@ export const DisplayArea = (props: DisplayAreaProps) => {
   }
 
   const getRandomPosition = (): [number,number] => {
-    const d: number = PENCIL_SIZE * 2;
+    const d: number = PENCIL_IMAGE_MAX_DIMENSION;
 
     let x: number = Math.floor(Math.random() * DISPLAY_AREA_WIDTH);
     x = Math.min(DISPLAY_AREA_WIDTH - d, Math.max(d, x));
@@ -63,7 +63,7 @@ export const DisplayArea = (props: DisplayAreaProps) => {
         <div className="kd-display-area-drawing-area">
           <svg width={DISPLAY_AREA_WIDTH} height={DISPLAY_AREA_HEIGHT}
             viewBox={`0 0 ${DISPLAY_AREA_WIDTH} ${DISPLAY_AREA_HEIGHT}`}>
-            <image id="pencil" href={CODE_LEAD} x={pencil.x} y={pencil.y}
+            <image id="pencil" href={PENCIL_IMAGE} x={pencil.x} y={pencil.y}
               onClick={() => displayLevel === DISPLAY_LEVEL.PENCIL_ONLY && 
                 defineNextPosition()}></image>
           </svg>

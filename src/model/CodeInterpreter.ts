@@ -1,12 +1,12 @@
 import { StatementCode } from "../constants/modelConstants";
 import { KDContextType } from "./KDContext";
-import { KDCode, KDCodeStatement, KDPencil } from "./kidDevModel";
+import { KDCode, KDCodeStatement } from "./kidDevModel";
 import { DefaultNumberValue, DefaultStringValue } from "./../constants/modelConstants";
-import { DEFAULT_PENCIL_PEN_DELTA_X, DEFAULT_PENCIL_PEN_DELTA_Y, DEFAULT_PENCIL } from "../constants/displayConstants";
 import { showError } from "../utils/errorsUtil";
 import { KD_APP_ERROR_MESSAGES } from "../constants/appErrorMessages";
 import { CodeValidator } from "./CodeValidator";
 import { toRadians } from "../utils/generalUtils";
+import { KDPencil, DEFAULT_PENCIL_PEN_DELTA_X, DEFAULT_PENCIL_PEN_DELTA_Y, DEFAULT_PENCIL, PENCIL_IMAGE } from "./KDPencil";
 
 export class CodeInterpreter { 
   private displayLevel: number;
@@ -22,15 +22,7 @@ export class CodeInterpreter {
 
   private setPencilPosition(penX: number, penY: number) {
     const newX: number = penX - DEFAULT_PENCIL_PEN_DELTA_X;
-      // (DEFAULT_PENCIL_PEN_DELTA_X*Math.cos(toRadians(this.pencil.angle)));
-      // (DEFAULT_PENCIL_PEN_DELTA_X*Math.cos(toRadians(this.pencil.angle)) +
-      // (DEFAULT_PENCIL_PEN_DELTA_Y*Math.sin(toRadians(this.pencil.angle))));
-      //(this.pencil.x+(DEFAULT_PENCIL_PEN_DELTA_X*Math.cos(toRadians(this.pencil.angle))));
     const newY: number = penY - DEFAULT_PENCIL_PEN_DELTA_Y;
-      //  (DEFAULT_PENCIL_PEN_DELTA_Y*Math.cos(toRadians(this.pencil.angle)));
-      // (DEFAULT_PENCIL_PEN_DELTA_Y*Math.cos(toRadians(this.pencil.angle)) -
-      //   DEFAULT_PENCIL_PEN_DELTA_X*Math.sin(toRadians(this.pencil.angle)));
-      // (this.pencil.y-(DEFAULT_PENCIL_PEN_DELTA_Y*Math.sin(toRadians(this.pencil.angle))));
 
     this.pencil = {
       x: newX,
@@ -56,7 +48,7 @@ export class CodeInterpreter {
 
     var newPencil = document.createElementNS(this.SVG_NS,'image');
     newPencil.setAttribute('id', 'pencil');
-    newPencil.setAttribute('href', "./resources/pencil128.png");
+    newPencil.setAttribute('href', PENCIL_IMAGE);
     newPencil.setAttribute('x', '100');
     newPencil.setAttribute('y', '100');
     newPencil.setAttribute('transform', "rotate(0)");
@@ -128,9 +120,11 @@ export class CodeInterpreter {
     newLine.setAttribute("stroke", this.pencil.stroke)
     svg.append(newLine);
 
+
     this.setPencilPosition(newPenX, newPenY);
     pencil.setAttribute('x', this.pencil.x.toString());
     pencil.setAttribute('y', this.pencil.y.toString());
+    pencil.setAttribute('transform', `rotate(${-this.pencil.angle},${this.pencil.penX},${this.pencil.penY})`);
   } 
 
   public execSetStroke(stroke: string) {
@@ -144,12 +138,8 @@ export class CodeInterpreter {
 
     if (angle >= 0) {
       this.setPencilAngle(angle!);
-
-      // const pencil = document.getElementById("pencil")!;
-      // pencil.setAttribute('transform', `rotate(${this.pencil.rotate}, ${this.pencil.penX}, ${this.pencil.penY})`);
-      // pencil.setAttribute('x', "100");
-      // pencil.setAttribute('y', "100");
-      // this.pencil.x.toString()
+      const pencil = document.getElementById("pencil")!;
+      pencil.setAttribute('transform', `rotate(${-this.pencil.angle},${this.pencil.penX},${this.pencil.penY})`);
     }
   }
 }

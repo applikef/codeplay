@@ -1,15 +1,5 @@
 import { StatementCode } from "../constants/modelConstants";
 
-export interface KDPencil {
-  x: number;
-  y: number;
-  penX: number;
-  penY: number;
-  stroke: string;
-  angle: number;
-  rotate: number;
-}
-
 export interface KDCode {
   code: Array<KDCodeBlock>;
 }

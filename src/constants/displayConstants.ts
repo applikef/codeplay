@@ -1,20 +1,5 @@
-import { KDPencil } from "../model/kidDevModel";
-
 export const DISPLAY_AREA_WIDTH = 800; 
 export const DISPLAY_AREA_HEIGHT = 600; 
-
-export const DEFAULT_PENCIL: KDPencil = {
-  x: 100,
-  y: 100,
-  penX: 162,
-  penY: 216,
-  stroke: "#0000ff",
-  angle: 0,
-  rotate: 0
-}
-
-export const DEFAULT_PENCIL_PEN_DELTA_X = 62;
-export const DEFAULT_PENCIL_PEN_DELTA_Y = 116;
 
 export const StrokeColors: Array<string> = [
   "RED",
